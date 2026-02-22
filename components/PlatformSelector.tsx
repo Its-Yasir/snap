@@ -9,24 +9,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-
-const PLATFORMS = [
-  "Discord",
-  "Facebook",
-  "Instagram",
-  "LinkedIn",
-  "Pinterest",
-  "Reddit",
-  "Snapchat",
-  "Telegram",
-  "Threads",
-  "TikTok",
-  "Twitch",
-  "WeChat",
-  "WhatsApp",
-  "X (Twitter)",
-  "YouTube",
-];
+import { PLATFORMS } from "@/lib/platforms";
 
 export function PlatformSelector() {
   const searchParams = useSearchParams();
