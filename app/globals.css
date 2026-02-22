@@ -142,3 +142,24 @@ html {
     @apply bg-background text-foreground;
   }
 }
+
+/* Modern Scrollbar utility */
+@layer utilities {
+  .scrollbar-modern::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  .scrollbar-modern::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .scrollbar-modern::-webkit-scrollbar-thumb {
+    @apply bg-zinc-300 dark:bg-zinc-700 rounded-full;
+  }
+  .scrollbar-modern {
+    scrollbar-width: thin;
+    scrollbar-color: #d4d4d8 transparent; /* zinc-300 */
+  }
+  .dark .scrollbar-modern {
+    scrollbar-color: #3f3f46 transparent; /* zinc-700 */
+  }
+}
