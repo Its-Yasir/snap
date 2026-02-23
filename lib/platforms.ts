@@ -68,6 +68,7 @@ export const TYPES: PlatformConfig[] = [
       { key: "group-card", title: "Group Card" },
       { key: "in-message-profile-card", title: "In-Message Profile Card" },
       { key: "profile-card", title: "Profile Card" },
+      { key: "mini-profile-card", title: "Mini Profile Card" },
     ],
   },
   {

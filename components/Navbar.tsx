@@ -3,6 +3,7 @@
 import { useTheme } from "next-themes";
 import { Moon, Sun } from "lucide-react";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 export function Navbar() {
   const { theme, setTheme } = useTheme();
@@ -40,12 +41,12 @@ export function Navbar() {
               <div className="w-5 h-5" /> /* Placeholder matching icon size */
             )}
           </button>
-          <a
-            href="#"
+          <Link
+            href="/work"
             className="bg-primary hover:bg-primary/90 text-white px-5 py-2 rounded-full font-medium transition-all shadow-sm hover:shadow-md active:scale-95"
           >
             Go to App
-          </a>
+          </Link>
         </div>
       </div>
     </nav>

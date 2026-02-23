@@ -5,17 +5,30 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { PlatformSelector } from "@/components/PlatformSelector";
 import { PlatformNavbar } from "@/components/PlatformNavbar";
 import { isValidPlatform } from "@/lib/platforms";
+import { isValidElementType } from "@/utils";
+import TypeSelector from "@/components/TypeSelector";
 
 function WorkPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const platform = searchParams.get("p");
+  const elementType = searchParams.get("t");
 
   useEffect(() => {
     if (platform && !isValidPlatform(platform)) {
       router.replace("/work");
     }
   }, [platform, router]);
+
+  useEffect(() => {
+    if (
+      platform &&
+      elementType &&
+      !isValidElementType({ platform, elementType })
+    ) {
+      router.replace(`/work?p=${platform}`);
+    }
+  }, [elementType, platform, router]);
 
   if (!platform || !isValidPlatform(platform)) {
     return <PlatformSelector />;
@@ -26,10 +39,12 @@ function WorkPageContent() {
       <div className="w-full border-b border-zinc-200/50 dark:border-zinc-800/50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md sticky top-0 z-50">
         <PlatformNavbar />
       </div>
-      <div className="flex-1 flex items-center justify-center">
-        <h1 className="text-3xl font-bold tracking-tight text-zinc-800 dark:text-zinc-200">
-          Working on: <span className="text-emerald-500">{platform}</span>
-        </h1>
+      <div className="flex-1 flex flex-col items-center pt-24 pb-12 w-full">
+        <h2 className="text-3xl font-medium tracking-tight text-zinc-800 dark:text-zinc-200 mb-8 text-center px-4">
+          Select an element from{" "}
+          <span className="text-emerald-500">{platform}</span>
+        </h2>
+        {platform && isValidPlatform(platform) ? <TypeSelector /> : null}
       </div>
     </div>
   );
