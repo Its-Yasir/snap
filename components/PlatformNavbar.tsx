@@ -17,8 +17,9 @@ export function PlatformNavbar() {
     if (scrollContainerRef.current) {
       const { scrollLeft, scrollWidth, clientWidth } =
         scrollContainerRef.current;
-      setCanScrollLeft(scrollLeft > 0);
-      setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth);
+      // Use 20px threshold to account for px-4 (16px) padding when snapping to the first element
+      setCanScrollLeft(scrollLeft > 20);
+      setCanScrollRight(Math.ceil(scrollLeft + clientWidth) < scrollWidth - 20);
     }
   };
 
