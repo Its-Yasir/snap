@@ -69,7 +69,9 @@ export function PlatformSelector() {
             <DropdownMenuContent
               side="bottom"
               align="center"
-              className="w-(--radix-dropdown-menu-trigger-width) max-h-[300px] overflow-y-auto scrollbar-modern rounded-xl p-2"
+              sideOffset={8}
+              collisionPadding={20}
+              className="w-(--radix-dropdown-menu-trigger-width) max-h-[220px] overflow-y-auto scrollbar-modern rounded-xl p-2 z-50 bg-white dark:bg-zinc-950"
             >
               {PLATFORMS.map((p) => {
                 const Icon = PlatformIcons[p] || LayoutTemplate;

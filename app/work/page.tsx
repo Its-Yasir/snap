@@ -39,7 +39,7 @@ function WorkPageContent() {
       <div className="w-full border-b border-zinc-200/50 dark:border-zinc-800/50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md sticky top-0 z-50">
         <PlatformNavbar />
       </div>
-      <div className="flex-1 flex flex-col items-center pt-24 pb-12 w-full">
+      <div className="flex-1 flex flex-col items-center justify-center w-full">
         <h2 className="text-3xl font-medium tracking-tight text-zinc-800 dark:text-zinc-200 mb-8 text-center px-4">
           Select an element from{" "}
           <span className="text-emerald-500">{platform}</span>
