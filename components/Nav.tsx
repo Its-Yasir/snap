@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Pencil, Settings, Heart } from "lucide-react";
+import { Pencil, Settings } from "lucide-react";
 import Link from "next/link";
 
 import {
@@ -30,11 +30,10 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 const Nav = () => {
-  const [workspaceName, setWorkspaceName] = useState("Your Workspace");
-  const [tempName, setTempName] = useState(workspaceName);
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { settings, updateSettings } = useBoardStore((state) => state);
-  const { Layout, bg, boardColor } = settings;
+  const { Layout, bg, boardColor, workspaceName } = settings;
+  const [tempName, setTempName] = useState(workspaceName || "Your Workspace");
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const navPadding = {
     compact: "px-2 py-2",
@@ -44,7 +43,7 @@ const Nav = () => {
 
   const handleSaveWorkspace = () => {
     if (tempName.trim()) {
-      setWorkspaceName(tempName.trim());
+      updateSettings({ workspaceName: tempName.trim() });
     }
     setIsDialogOpen(false);
   };
@@ -116,7 +115,7 @@ const Nav = () => {
                 value={tempName}
                 onChange={(e) => setTempName(e.target.value)}
                 maxLength={30}
-                className="col-span-3 text-black"
+                className="col-span-3 bg-black text-white border-gray-800"
                 placeholder="e.g. Acme Corp"
                 onKeyDown={(e) => {
                   if (e.key === "Enter") handleSaveWorkspace();
@@ -214,6 +213,27 @@ const Nav = () => {
                     >
                       <span className="capitalize">{color}</span>{" "}
                       {boardColor === color && "✓"}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>Position</DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {["horizontal", "vertical"].map((pos) => (
+                    <DropdownMenuItem
+                      key={pos}
+                      onClick={() =>
+                        updateSettings({
+                          position: pos as "horizontal" | "vertical",
+                        })
+                      }
+                    >
+                      <span className="capitalize">{pos}</span>{" "}
+                      {settings.position === pos && "✓"}
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuSubContent>

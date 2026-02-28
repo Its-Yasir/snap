@@ -13,6 +13,13 @@ export default function CanvasBoard() {
   // Handle Spacebar for temporary panning
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
+      // Don't intercept Spacebar if focused inside an input/textarea
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      ) {
+        return;
+      }
       if (e.code === "Space") {
         e.preventDefault(); // Prevents page from jumping down
         setIsSpacePressed(true);
@@ -20,6 +27,12 @@ export default function CanvasBoard() {
     };
 
     const handleKeyUp = (e: KeyboardEvent) => {
+      if (
+        e.target instanceof HTMLInputElement ||
+        e.target instanceof HTMLTextAreaElement
+      ) {
+        return;
+      }
       if (e.code === "Space") {
         setIsSpacePressed(false);
       }
@@ -37,7 +50,7 @@ export default function CanvasBoard() {
   // Panning is active if the Hand tool is selected OR Spacebar is held
   const isPanningActive = isPanMode || isSpacePressed;
 
-  const { settings } = useBoardStore((state) => state);
+  const { settings, isSearching } = useBoardStore((state) => state);
   const { Layout, bg, boardColor } = settings;
 
   const toolbarPadding = {
@@ -87,7 +100,8 @@ export default function CanvasBoard() {
         minScale={0.3}
         maxScale={4}
         centerOnInit={true}
-        wheel={{ step: 0.1 }}
+        wheel={{ wheelDisabled: isSearching, step: 0.1 }}
+        doubleClick={{ disabled: true }}
         // Dynamically disable/enable panning
         panning={{ disabled: !isPanningActive }}
       >
@@ -237,7 +251,7 @@ export default function CanvasBoard() {
                     className="flex items-center gap-10 p-10"
                   >
                     <div
-                      className={`w-auto h-auto border-2 border-dashed rounded-md flex items-center justify-center shadow-lg transition-colors ${activeBoardColor}`}
+                      className={`w-auto h-auto rounded-md flex items-center justify-center shadow-lg transition-colors ${activeBoardColor}`}
                     >
                       <Main />
                     </div>

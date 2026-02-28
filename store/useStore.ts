@@ -6,11 +6,16 @@ export const useBoardStore = create<BoardState>()(
   persist(
     (set) => ({
       posts: [],
+      isSearching: false,
       settings: {
         Layout: "compact",
-        bg: "green",
+        bg: "black",
         boardColor: "black",
+        position: "horizontal",
+        workspaceName: "Your Workspace",
       },
+
+      setIsSearching: (val) => set({ isSearching: val }),
 
       addPost: (post) =>
         set((state) => {
