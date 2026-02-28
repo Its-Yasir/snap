@@ -11,11 +11,13 @@ export interface BoardState {
   posts: Post[];
   settings: Settings;
   isSearching: boolean;
+  activePostId: string | null;
   addPost: (post: Post) => void;
   updatePost: (id: string, updatedData: Partial<Post>) => void;
   removePost: (id: string) => void;
   updateSettings: (newSettings: Partial<Settings>) => void;
   setIsSearching: (val: boolean) => void;
+  setActivePostId: (id: string | null) => void;
 }
 
 export interface Settings {
@@ -24,6 +26,8 @@ export interface Settings {
   boardColor: "green" | "blue" | "gray" | "black" | "white";
   position: "horizontal" | "vertical";
   workspaceName: string;
+  sidebarPosition: "left" | "right";
+  toolbarPosition: "top" | "bottom";
 }
 
 export interface Platform {

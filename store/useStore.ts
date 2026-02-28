@@ -7,15 +7,19 @@ export const useBoardStore = create<BoardState>()(
     (set) => ({
       posts: [],
       isSearching: false,
+      activePostId: null,
       settings: {
         Layout: "compact",
         bg: "black",
         boardColor: "black",
         position: "horizontal",
         workspaceName: "Your Workspace",
+        sidebarPosition: "left",
+        toolbarPosition: "bottom",
       },
 
       setIsSearching: (val) => set({ isSearching: val }),
+      setActivePostId: (id) => set({ activePostId: id }),
 
       addPost: (post) =>
         set((state) => {

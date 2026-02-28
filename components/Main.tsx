@@ -8,8 +8,16 @@ import { platformTypesData } from "@/data/types";
 import { Type } from "@/types";
 
 const Main = () => {
-  const { settings, posts, addPost, removePost, updatePost, setIsSearching } =
-    useBoardStore((state) => state);
+  const {
+    settings,
+    posts,
+    addPost,
+    removePost,
+    updatePost,
+    setIsSearching,
+    activePostId,
+    setActivePostId,
+  } = useBoardStore((state) => state);
   const { Layout, boardColor, position } = settings;
 
   const [focusedPostId, setFocusedPostId] = useState<string | null>(null);
@@ -22,6 +30,9 @@ const Main = () => {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
+      const target = event.target as Element;
+      if (target?.closest(".sidebar-container")) return;
+
       if (
         !postsRef.current.some(
           (ref) => ref && ref.contains(event.target as Node),
@@ -30,11 +41,12 @@ const Main = () => {
         setFocusedPostId(null);
         setIsSearching(false);
         setHoveredPreview(null);
+        setActivePostId(null);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [setIsSearching]);
+  }, [setIsSearching, setActivePostId]);
 
   const paddingMap = {
     compact: "p-2",
@@ -149,11 +161,12 @@ const Main = () => {
     updatePost(postId, {
       platform: type.platform.code,
       type: type.code,
-      content: `${type.platform.name} - ${type.name}`,
+      content: type as unknown as Record<string, unknown>, // Storing the full Type object to render icon later
     });
     setFocusedPostId(null);
     setIsSearching(false);
     setHoveredPreview(null);
+    setActivePostId(postId);
   };
 
   return (
@@ -172,7 +185,7 @@ const Main = () => {
       <div
         className={`flex gap-4 flex-wrap ${position === "vertical" ? "flex-col pb-32" : "flex-row w-full"}`}
       >
-        {posts.map((post) => {
+        {posts.map((post, index) => {
           const query = typeof post.content === "string" ? post.content : "";
           const results = getSearchResults(query);
           const showDropdown = focusedPostId === post.id && query.length > 0;
@@ -180,32 +193,80 @@ const Main = () => {
           return (
             <div
               key={post.id}
-              className="flex items-center gap-2 flex-1 min-w-[300px]"
+              ref={(el) => {
+                postsRef.current[index] = el;
+              }}
+              className={`flex items-center gap-2 flex-1 min-w-[300px] p-2 rounded-xl border-2 transition-all cursor-pointer ${
+                activePostId === post.id
+                  ? boardColor === "white"
+                    ? "border-black/30 bg-black/5"
+                    : "border-white/30 bg-white/5"
+                  : "border-transparent hover:border-white/10"
+              }`}
+              onClick={(e) => {
+                e.stopPropagation();
+                setActivePostId(post.id);
+              }}
             >
               <div className="relative flex-1">
-                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                <Input
-                  placeholder="Search anything like, Post, video or comment"
-                  className={`pl-8 bg-background border-input ${
-                    boardColor === "white" ? "border-gray-400" : ""
-                  }`}
-                  value={query}
-                  onChange={(e) =>
-                    updatePost(post.id, { content: e.target.value })
-                  }
-                  onFocus={() => {
-                    setFocusedPostId(post.id);
-                    setIsSearching(true);
-                  }}
-                  onClick={() => {
-                    setFocusedPostId(post.id);
-                    setIsSearching(true);
-                  }}
-                  onMouseDown={(e) => e.stopPropagation()}
-                  onTouchStart={(e) => e.stopPropagation()}
-                  onPointerDownCapture={(e) => e.stopPropagation()}
-                  onKeyDownCapture={(e) => e.stopPropagation()}
-                />
+                {post.type !== "empty" ? (
+                  <div
+                    className={`flex items-center gap-2 h-10 w-full rounded-md border px-3 py-2 text-sm font-medium truncate ${
+                      boardColor === "white"
+                        ? "bg-white border-gray-400 text-black"
+                        : "bg-background border-input text-foreground"
+                    }`}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setActivePostId(post.id);
+                    }}
+                  >
+                    {typeof post.content === "object" &&
+                    post.content !== null ? (
+                      <>
+                        <div className="w-5 h-5 flex items-center justify-center shrink-0">
+                          {(post.content as unknown as Type).platform?.icon}
+                        </div>
+                        <span className="truncate">
+                          {(post.content as unknown as Type).name}
+                        </span>
+                      </>
+                    ) : typeof post.content === "string" ? (
+                      post.content
+                    ) : (
+                      ""
+                    )}
+                  </div>
+                ) : (
+                  <>
+                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                    <Input
+                      placeholder="Search anything like, Post, video or comment"
+                      className={`pl-8 bg-background border-input ${
+                        boardColor === "white" ? "border-gray-400" : ""
+                      }`}
+                      value={query}
+                      onChange={(e) =>
+                        updatePost(post.id, { content: e.target.value })
+                      }
+                      onFocus={() => {
+                        setFocusedPostId(post.id);
+                        setActivePostId(post.id);
+                        setIsSearching(true);
+                      }}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setFocusedPostId(post.id);
+                        setActivePostId(post.id);
+                        setIsSearching(true);
+                      }}
+                      onMouseDown={(e) => e.stopPropagation()}
+                      onTouchStart={(e) => e.stopPropagation()}
+                      onPointerDownCapture={(e) => e.stopPropagation()}
+                      onKeyDownCapture={(e) => e.stopPropagation()}
+                    />
+                  </>
+                )}
 
                 {showDropdown && (
                   <div
@@ -264,7 +325,7 @@ const Main = () => {
 
                 {showDropdown && hoveredPreview && (
                   <div
-                    className="absolute right-full mr-2 z-[60] w-48 p-1 bg-background border rounded-md shadow-xl pointer-events-none"
+                    className="absolute right-full mr-2 z-60 w-48 p-1 bg-background border rounded-md shadow-xl pointer-events-none"
                     style={{ top: hoveredPreview.top }}
                   >
                     <Image

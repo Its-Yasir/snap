@@ -220,7 +220,7 @@ const Nav = () => {
             </DropdownMenuSub>
 
             <DropdownMenuSub>
-              <DropdownMenuSubTrigger>Position</DropdownMenuSubTrigger>
+              <DropdownMenuSubTrigger>Board Position</DropdownMenuSubTrigger>
               <DropdownMenuPortal>
                 <DropdownMenuSubContent>
                   {["horizontal", "vertical"].map((pos) => (
@@ -234,6 +234,48 @@ const Nav = () => {
                     >
                       <span className="capitalize">{pos}</span>{" "}
                       {settings.position === pos && "✓"}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>Sidebar Position</DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {["left", "right"].map((pos) => (
+                    <DropdownMenuItem
+                      key={pos}
+                      onClick={() =>
+                        updateSettings({
+                          sidebarPosition: pos as "left" | "right",
+                        })
+                      }
+                    >
+                      <span className="capitalize">{pos}</span>{" "}
+                      {settings.sidebarPosition === pos && "✓"}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuSubContent>
+              </DropdownMenuPortal>
+            </DropdownMenuSub>
+
+            <DropdownMenuSub>
+              <DropdownMenuSubTrigger>Toolbar Position</DropdownMenuSubTrigger>
+              <DropdownMenuPortal>
+                <DropdownMenuSubContent>
+                  {["top", "bottom"].map((pos) => (
+                    <DropdownMenuItem
+                      key={pos}
+                      onClick={() =>
+                        updateSettings({
+                          toolbarPosition: pos as "top" | "bottom",
+                        })
+                      }
+                    >
+                      <span className="capitalize">{pos}</span>{" "}
+                      {settings.toolbarPosition === pos && "✓"}
                     </DropdownMenuItem>
                   ))}
                 </DropdownMenuSubContent>

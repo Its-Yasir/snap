@@ -4,6 +4,7 @@ import Main from "@/components/Main";
 import { useState, useEffect } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Nav from "./Nav";
+import SideBar from "./SideBar";
 import { useBoardStore } from "@/store/useStore";
 
 export default function CanvasBoard() {
@@ -51,7 +52,7 @@ export default function CanvasBoard() {
   const isPanningActive = isPanMode || isSpacePressed;
 
   const { settings, isSearching } = useBoardStore((state) => state);
-  const { Layout, bg, boardColor } = settings;
+  const { Layout, bg, boardColor, toolbarPosition } = settings;
 
   const toolbarPadding = {
     compact: "p-1",
@@ -109,8 +110,9 @@ export default function CanvasBoard() {
           <>
             {/* Floating Toolbar */}
             <Nav />
+            <SideBar />
             <div
-              className={`absolute bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 ${toolbarPadding} ${activeToolbarColor} rounded-lg shadow-2xl border text-sm font-medium transition-colors`}
+              className={`absolute ${toolbarPosition === "top" ? "top-6" : "bottom-8"} left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 ${toolbarPadding} ${activeToolbarColor} rounded-lg shadow-2xl border text-sm font-medium transition-colors`}
             >
               {/* Select Tool */}
               <button
