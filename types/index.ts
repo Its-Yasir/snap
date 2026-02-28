@@ -47,3 +47,61 @@ export type PlatformTypes = {
   platform: Platform;
   types: Type[];
 }[];
+
+export interface inputForImg {
+  label: string;
+  placeholder: string;
+}
+
+export interface inputForText {
+  title: string;
+  label: string;
+  placeholder: string;
+}
+
+export interface choice {
+  key: string;
+  value: string;
+}
+
+export interface imageInputType {
+  name: string;
+  isHidden: boolean;
+  url: string;
+  input?: inputForImg;
+}
+
+export interface textType {
+  type: "text" | "choice";
+  currentValue: string;
+  choices?: choice[];
+  input: inputForText;
+}
+
+export interface extraNumeric {
+  name: string;
+  min: number;
+  max: number;
+  current: number;
+  default?: number;
+}
+
+export type DataType = {
+  platform:
+    | "discord"
+    | "facebook"
+    | "instagram"
+    | "linkedIn"
+    | "pinterest"
+    | "reddit"
+    | "snapchat"
+    | "telegram"
+    | "tikTok"
+    | "whatsApp"
+    | "x"
+    | "youTube";
+  type: string;
+  images: imageInputType[];
+  text: textType[];
+  extra: extraNumeric[];
+}[];
