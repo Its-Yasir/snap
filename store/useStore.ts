@@ -1,0 +1,42 @@
+import { BoardState } from "@/types";
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
+
+export const useBoardStore = create<BoardState>()(
+  persist(
+    (set) => ({
+      posts: [],
+      settings: {
+        Layout: "compact",
+        bg: "green",
+        boardColor: "black",
+      },
+
+      addPost: (post) =>
+        set((state) => {
+          if (state.posts.length >= 5) return state; // Max 5 posts limit
+          return { posts: [...state.posts, post] };
+        }),
+
+      updatePost: (id, updatedData) =>
+        set((state) => ({
+          posts: state.posts.map((p) =>
+            p.id === id ? { ...p, ...updatedData } : p,
+          ),
+        })),
+
+      removePost: (id) =>
+        set((state) => ({
+          posts: state.posts.filter((p) => p.id !== id),
+        })),
+
+      updateSettings: (newSettings) =>
+        set((state) => ({
+          settings: { ...state.settings, ...newSettings },
+        })),
+    }),
+    {
+      name: "board-storage", // This is the key in localStorage
+    },
+  ),
+);

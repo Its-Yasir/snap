@@ -19,7 +19,7 @@ export function Footer() {
             className="flex items-center gap-2 px-4 py-2 rounded-full border border-surface hover:bg-surface transition-colors text-sm font-medium"
           >
             <Heart size={16} className="text-red-500" fill="currentColor" />
-            Support us
+            Support us 💝
           </a>
         </div>
 
