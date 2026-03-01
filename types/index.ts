@@ -34,6 +34,11 @@ export interface BoardState {
   setIsSearching: (val: boolean) => void;
   setIsPanning: (val: boolean) => void;
   setActivePostId: (id: number | null) => void;
+  setImageVisibility: (
+    postId: number,
+    imageIndex: number,
+    isHidden: boolean,
+  ) => void;
 }
 
 export interface Settings {

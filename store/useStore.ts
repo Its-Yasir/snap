@@ -45,6 +45,23 @@ export const useBoardStore = create<BoardState>()(
         set((state) => ({
           settings: { ...state.settings, ...newSettings },
         })),
+
+      setImageVisibility: (postId, imageIndex, isHidden) =>
+        set((state) => ({
+          posts: state.posts.map((post) => {
+            if (post.id === postId) {
+              const newImages = [...post.images];
+              if (newImages[imageIndex]) {
+                newImages[imageIndex] = {
+                  ...newImages[imageIndex],
+                  isHidden,
+                };
+              }
+              return { ...post, images: newImages };
+            }
+            return post;
+          }),
+        })),
     }),
     {
       name: "board-storage",

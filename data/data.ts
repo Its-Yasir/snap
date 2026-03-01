@@ -8,7 +8,7 @@ export const Data: DataType = [
       {
         name: "Profile Image",
         url: "/zohaib.png",
-        isHidden: true,
+        isHidden: false,
         input: {
           label: "Enter profile URL or username:",
           placeholder: "https://discord.com/zohiab_yousaf or user_name",

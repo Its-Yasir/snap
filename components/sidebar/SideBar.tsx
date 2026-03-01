@@ -113,7 +113,11 @@ export default function SideBar() {
           !isEnabled ? "opacity-40 pointer-events-none grayscale" : ""
         }`}
       >
-        <div>{activeTool === "images" && activePostId && <ImageEdit />}</div>
+        <div>
+          {activeTool === "images" && activePostId && (
+            <ImageEdit id={activePostId} />
+          )}
+        </div>
         <div>{activeTool === "text" && activePostId && <TextEdit />}</div>
         <div>{activeTool === "more" && activePostId && <MoreEdit />}</div>
       </div>

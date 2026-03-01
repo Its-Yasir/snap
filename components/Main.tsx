@@ -237,7 +237,7 @@ const Main = () => {
               ref={(el) => {
                 postsRef.current[index] = el;
               }}
-              className={`flex items-center gap-2 flex-1 min-w-[300px] p-2 rounded-xl border-2 transition-all cursor-pointer ${
+              className={`flex flex-col gap-3 flex-1 min-h-fit min-w-[300px] ${post.type === "empty" ? "p-1" : "p-3"} rounded-xl border-2 transition-all cursor-pointer ${
                 activePostId === post.id
                   ? boardColor === "white"
                     ? "border-black/30 bg-black/5"
@@ -250,163 +250,173 @@ const Main = () => {
                 setActivePostId(post.id);
               }}
             >
-              <div className="relative flex-1">
-                {post.type !== "empty" ? (
-                  <>
-                    <div
-                      className={`flex w-full rounded-md border p-4 ${
-                        boardColor === "white"
-                          ? "bg-white border-gray-400 text-black"
-                          : "bg-background border-input text-foreground"
-                      }`}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (isPanning) return;
-                        setActivePostId(post.id);
-                      }}
-                    >
-                      {(() => {
-                        const typeObj = getTypeObject(post.platform, post.type);
-                        if (typeObj) {
-                          return (
-                            <>
-                              <div className="w-5 h-5 flex items-center justify-center shrink-0">
-                                {typeObj.platform.icon}
-                              </div>
-                              <span className="truncate ml-2">
-                                {typeObj.name}
-                              </span>
-                            </>
+              <div className="flex w-full items-center gap-2">
+                <div className="relative flex-1">
+                  {post.type !== "empty" ? (
+                    <>
+                      <div
+                        className={`flex items-center w-full rounded-md border px-3 py-2 text-sm ${
+                          boardColor === "white"
+                            ? "bg-white border-gray-400 text-black"
+                            : "bg-background border-input text-foreground"
+                        }`}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (isPanning) return;
+                          setActivePostId(post.id);
+                        }}
+                      >
+                        {(() => {
+                          const typeObj = getTypeObject(
+                            post.platform,
+                            post.type,
                           );
-                        }
-                        return null;
-                      })()}
-                    </div>
-                    <Snip platform={post.platform} type={post.type} />
-                  </>
-                ) : (
-                  <>
-                    <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                    <Input
-                      placeholder="Search anything like, Post, video or comment"
-                      className={`pl-8 bg-background border-input ${
-                        boardColor === "white" ? "border-gray-400" : ""
-                      }`}
-                      value={query}
-                      onChange={(e) =>
-                        setSearchQueries((prev) => ({
-                          ...prev,
-                          [post.id]: e.target.value,
-                        }))
-                      }
-                      onFocus={() => {
-                        if (isPanning) return;
-                        setFocusedPostId(post.id);
-                        setActivePostId(post.id);
-                        setIsSearching(true);
-                      }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        if (isPanning) return;
-                        setFocusedPostId(post.id);
-                        setActivePostId(post.id);
-                        setIsSearching(true);
-                      }}
-                      onMouseDown={(e) => e.stopPropagation()}
-                      onTouchStart={(e) => e.stopPropagation()}
-                      onPointerDownCapture={(e) => e.stopPropagation()}
-                      onKeyDownCapture={(e) => e.stopPropagation()}
-                    />
-                  </>
-                )}
-
-                {showDropdown && (
-                  <div
-                    className={`absolute top-full left-0 right-0 mt-2 z-50 max-h-[300px] overflow-y-auto rounded-md border ${dropdownBg} [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-thumb]:rounded-full`}
-                    onScroll={() => setHoveredPreview(null)}
-                    onMouseLeave={() => setHoveredPreview(null)}
-                  >
-                    {results.length > 0 ? (
-                      results.map((result, idx) => (
-                        <div
-                          key={idx}
-                          className={`group relative flex items-center gap-3 p-3 cursor-pointer transition-colors ${dropdownHover}`}
-                          onClick={() =>
-                            handleSelectSearchResult(Number(post.id), result)
+                          if (typeObj) {
+                            return (
+                              <>
+                                <div className="w-5 h-5 flex items-center justify-center shrink-0">
+                                  {typeObj.platform.icon}
+                                </div>
+                                <span className="truncate ml-2">
+                                  {typeObj.name}
+                                </span>
+                              </>
+                            );
                           }
-                          onMouseEnter={(e) => {
-                            if (result.imageUrl) {
-                              const container =
-                                e.currentTarget.closest(".relative.flex-1");
-                              if (container) {
-                                const containerRect =
-                                  container.getBoundingClientRect();
-                                const itemRect =
-                                  e.currentTarget.getBoundingClientRect();
-                                setHoveredPreview({
-                                  url: result.imageUrl,
-                                  name: result.name,
-                                  top: itemRect.top - containerRect.top,
-                                });
-                              }
-                            } else {
-                              setHoveredPreview(null);
-                            }
-                          }}
-                        >
-                          <div
-                            className={`text-muted-foreground transition-colors ${
-                              brandHoverColors[result.platform.code] ||
-                              "group-hover:text-foreground"
-                            }`}
-                          >
-                            {result.platform.icon}
-                          </div>
-                          <span className="text-sm font-medium">
-                            {result.name}
-                          </span>
-                        </div>
-                      ))
-                    ) : (
-                      <div className="p-3 text-sm text-center opacity-70">
-                        No results found
+                          return null;
+                        })()}
                       </div>
-                    )}
-                  </div>
-                )}
+                    </>
+                  ) : (
+                    <>
+                      <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                      <Input
+                        placeholder="Search anything like, Post, video or comment"
+                        className={`pl-8 bg-background border-input ${
+                          boardColor === "white" ? "border-gray-400" : ""
+                        }`}
+                        value={query}
+                        onChange={(e) =>
+                          setSearchQueries((prev) => ({
+                            ...prev,
+                            [post.id]: e.target.value,
+                          }))
+                        }
+                        onFocus={() => {
+                          if (isPanning) return;
+                          setFocusedPostId(post.id);
+                          setActivePostId(post.id);
+                          setIsSearching(true);
+                        }}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          if (isPanning) return;
+                          setFocusedPostId(post.id);
+                          setActivePostId(post.id);
+                          setIsSearching(true);
+                        }}
+                        onMouseDown={(e) => e.stopPropagation()}
+                        onTouchStart={(e) => e.stopPropagation()}
+                        onPointerDownCapture={(e) => e.stopPropagation()}
+                        onKeyDownCapture={(e) => e.stopPropagation()}
+                      />
+                    </>
+                  )}
 
-                {showDropdown && hoveredPreview && (
-                  <div
-                    className="absolute right-full mr-2 z-60 w-48 p-1 bg-background border rounded-md shadow-xl pointer-events-none"
-                    style={{ top: hoveredPreview.top }}
-                  >
-                    <Image
-                      src={hoveredPreview.url}
-                      alt={hoveredPreview.name}
-                      width={192}
-                      height={192}
-                      className="w-full h-auto object-cover rounded"
-                    />
-                  </div>
-                )}
+                  {showDropdown && (
+                    <div
+                      className={`absolute top-full left-0 right-0 mt-2 z-50 max-h-[300px] overflow-y-auto rounded-md border ${dropdownBg} [&::-webkit-scrollbar]:w-1.5 [&::-webkit-scrollbar-track]:bg-transparent [&::-webkit-scrollbar-thumb]:bg-gray-400 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-thumb]:rounded-full`}
+                      onScroll={() => setHoveredPreview(null)}
+                      onMouseLeave={() => setHoveredPreview(null)}
+                    >
+                      {results.length > 0 ? (
+                        results.map((result, idx) => (
+                          <div
+                            key={idx}
+                            className={`group relative flex items-center gap-3 p-3 cursor-pointer transition-colors ${dropdownHover}`}
+                            onClick={() =>
+                              handleSelectSearchResult(Number(post.id), result)
+                            }
+                            onMouseEnter={(e) => {
+                              if (result.imageUrl) {
+                                const container =
+                                  e.currentTarget.closest(".relative.flex-1");
+                                if (container) {
+                                  const containerRect =
+                                    container.getBoundingClientRect();
+                                  const itemRect =
+                                    e.currentTarget.getBoundingClientRect();
+                                  setHoveredPreview({
+                                    url: result.imageUrl,
+                                    name: result.name,
+                                    top: itemRect.top - containerRect.top,
+                                  });
+                                }
+                              } else {
+                                setHoveredPreview(null);
+                              }
+                            }}
+                          >
+                            <div
+                              className={`text-muted-foreground transition-colors ${
+                                brandHoverColors[result.platform.code] ||
+                                "group-hover:text-foreground"
+                              }`}
+                            >
+                              {result.platform.icon}
+                            </div>
+                            <span className="text-sm font-medium">
+                              {result.name}
+                            </span>
+                          </div>
+                        ))
+                      ) : (
+                        <div className="p-3 text-sm text-center opacity-70">
+                          No results found
+                        </div>
+                      )}
+                    </div>
+                  )}
+
+                  {showDropdown && hoveredPreview && (
+                    <div
+                      className="absolute right-full mr-2 z-60 w-48 p-1 bg-background border rounded-md shadow-xl pointer-events-none"
+                      style={{ top: hoveredPreview.top }}
+                    >
+                      <Image
+                        src={hoveredPreview.url}
+                        alt={hoveredPreview.name}
+                        width={192}
+                        height={192}
+                        className="w-full h-auto object-cover rounded"
+                      />
+                    </div>
+                  )}
+                </div>
+                <Button
+                  onClick={handleAddPost}
+                  disabled={posts.length >= 5}
+                  size="icon"
+                  className="shrink-0"
+                  onPointerDownCapture={(e) => e.stopPropagation()}
+                >
+                  <Plus className="h-4 w-4" />
+                </Button>
+                <Button
+                  onClick={() => removePost(post.id)}
+                  variant="destructive"
+                  size="icon"
+                  className="dark:bg-red-600 dark:hover:bg-red-700 dark:text-white shrink-0"
+                  onPointerDownCapture={(e) => e.stopPropagation()}
+                >
+                  <Trash2 className="h-4 w-4" />
+                </Button>
               </div>
-              <Button
-                onClick={handleAddPost}
-                disabled={posts.length >= 5}
-                size="icon"
-                onPointerDownCapture={(e) => e.stopPropagation()}
-              >
-                <Plus className="h-4 w-4" />
-              </Button>
-              <Button
-                onClick={() => removePost(post.id)}
-                variant="destructive"
-                size="icon"
-                className="dark:bg-red-600 dark:hover:bg-red-700 dark:text-white"
-                onPointerDownCapture={(e) => e.stopPropagation()}
-              >
-                <Trash2 className="h-4 w-4" />
-              </Button>
+              {post.type !== "empty" && (
+                <div className="w-full flex-1 overflow-visible">
+                  <Snip platform={post.platform} type={post.type} />
+                </div>
+              )}
             </div>
           );
         })}
