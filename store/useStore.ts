@@ -62,6 +62,22 @@ export const useBoardStore = create<BoardState>()(
             return post;
           }),
         })),
+      setImageUrl: (postId, imgIdx, url) =>
+        set((state) => ({
+          posts: state.posts.map((post) => {
+            if (post.id === postId) {
+              const newImg = [...post.images];
+              if (newImg[imgIdx]) {
+                newImg[imgIdx] = {
+                  ...newImg[imgIdx],
+                  url: url,
+                };
+              }
+              return { ...post, images: newImg };
+            }
+            return post;
+          }),
+        })),
     }),
     {
       name: "board-storage",

@@ -15,7 +15,22 @@ interface imageEditProps {
 }
 
 const ImageEdit = ({ id }: imageEditProps) => {
-  const { posts, setImageVisibility } = useBoardStore((state) => state);
+  const { posts, setImageVisibility, setImageUrl } = useBoardStore(
+    (state) => state,
+  );
+
+  const reandomImgChanger = (idx: number) => {
+    const min = 1;
+    const max = 70;
+    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    // Construct the Pravatar URL
+    const newAvatarUrl = `https://i.pravatar.cc/250?img=${randomNumber}`;
+
+    // Update the image URL in your Zustand store
+    setImageUrl(id, idx, newAvatarUrl);
+  };
+
   const currentSnip: Post | undefined = posts.find((p) => p.id === id);
   return (
     <div className="w-auto h-auto p-2 flex-col gap-1">
@@ -71,7 +86,11 @@ const ImageEdit = ({ id }: imageEditProps) => {
               Upload
               <TiUpload />
             </Button>
-            <Button variant={"outline"} className="cursor-pointer w-[45%]">
+            <Button
+              variant={"outline"}
+              onClick={() => reandomImgChanger(idx)}
+              className="cursor-pointer w-[45%]"
+            >
               Random
               <TbArrowsRandom />
             </Button>

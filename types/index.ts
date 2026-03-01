@@ -39,6 +39,7 @@ export interface BoardState {
     imageIndex: number,
     isHidden: boolean,
   ) => void;
+  setImageUrl: (postId: number, imgIdx: number, url: string) => void;
 }
 
 export interface Settings {
