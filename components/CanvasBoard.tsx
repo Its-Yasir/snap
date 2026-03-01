@@ -51,7 +51,14 @@ export default function CanvasBoard() {
   // Panning is active if the Hand tool is selected OR Spacebar is held
   const isPanningActive = isPanMode || isSpacePressed;
 
-  const { settings, isSearching } = useBoardStore((state) => state);
+  const { settings, isSearching, setIsPanning } = useBoardStore(
+    (state) => state,
+  );
+
+  useEffect(() => {
+    setIsPanning(isPanningActive);
+  }, [isPanningActive, setIsPanning]);
+
   const { Layout, bg, boardColor, toolbarPosition } = settings;
 
   const toolbarPadding = {

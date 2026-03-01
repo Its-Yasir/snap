@@ -20,6 +20,7 @@ const Main = () => {
     setIsSearching,
     activePostId,
     setActivePostId,
+    isPanning,
   } = useBoardStore((state) => state);
   const { Layout, boardColor, position } = settings;
   const { setSelectedSnip } = useSnipContext();
@@ -41,6 +42,8 @@ const Main = () => {
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
+      if (useBoardStore.getState().isPanning) return;
+
       const target = event.target as Element;
       if (target?.closest(".sidebar-container")) return;
 
@@ -243,6 +246,7 @@ const Main = () => {
               }`}
               onClick={(e) => {
                 e.stopPropagation();
+                if (isPanning) return;
                 setActivePostId(post.id);
               }}
             >
@@ -257,6 +261,7 @@ const Main = () => {
                       }`}
                       onClick={(e) => {
                         e.stopPropagation();
+                        if (isPanning) return;
                         setActivePostId(post.id);
                       }}
                     >
@@ -295,12 +300,14 @@ const Main = () => {
                         }))
                       }
                       onFocus={() => {
+                        if (isPanning) return;
                         setFocusedPostId(post.id);
                         setActivePostId(post.id);
                         setIsSearching(true);
                       }}
                       onClick={(e) => {
                         e.stopPropagation();
+                        if (isPanning) return;
                         setFocusedPostId(post.id);
                         setActivePostId(post.id);
                         setIsSearching(true);

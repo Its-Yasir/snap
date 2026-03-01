@@ -25,12 +25,14 @@ export interface BoardState {
   posts: Post[];
   settings: Settings;
   isSearching: boolean;
+  isPanning: boolean;
   activePostId: number | null;
   addPost: (post: Post) => void;
   updatePost: (id: number, updatedData: Partial<Post>) => void;
   removePost: (id: number) => void;
   updateSettings: (newSettings: Partial<Settings>) => void;
   setIsSearching: (val: boolean) => void;
+  setIsPanning: (val: boolean) => void;
   setActivePostId: (id: number | null) => void;
 }
 

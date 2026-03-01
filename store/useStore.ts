@@ -7,6 +7,7 @@ export const useBoardStore = create<BoardState>()(
     (set) => ({
       posts: [],
       isSearching: false,
+      isPanning: false,
       activePostId: null,
       settings: {
         Layout: "compact",
@@ -19,6 +20,7 @@ export const useBoardStore = create<BoardState>()(
       },
 
       setIsSearching: (val) => set({ isSearching: val }),
+      setIsPanning: (val) => set({ isPanning: val }),
       setActivePostId: (id) => set({ activePostId: id }),
 
       addPost: (post) =>
