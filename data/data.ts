@@ -50,11 +50,15 @@ export const Data: DataType = [
         },
       },
     ],
-    extra: [{ name: "Padding", min: 1, max: 5, current: 2, default: 2 }],
+    extra: [
+      { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+      { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+      { name: "Theme", min: 0, max: 1, current: 1 },
+    ],
   },
   {
     platform: "youTube",
-    type: "video thumbnail",
+    type: "thumbnail video",
     images: [
       {
         name: "Thumbnail",
@@ -122,6 +126,16 @@ export const Data: DataType = [
         },
       },
     ],
-    extra: [{ name: "Padding", min: 1, max: 5, current: 2 }],
+    extra: [
+      { name: "Padding", min: 1, max: 5, current: 2 },
+      { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+      { name: "Theme", min: 0, max: 1, current: 1 },
+      { name: "Show Views", min: 0, max: 1, current: 1 },
+      { name: "Show Video Age", min: 0, max: 1, current: 1 },
+      { name: "Show Subscribers", min: 0, max: 1, current: 1 },
+      { name: "Show Duration", min: 0, max: 1, current: 1 },
+      { name: "Show Timeline", min: 0, max: 1, current: 1 },
+      { name: "Video played", min: 1, max: 100, current: 34 },
+    ],
   },
 ];

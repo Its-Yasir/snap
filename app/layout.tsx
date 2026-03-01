@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { SnipProvider } from "@/context/SnipContext";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -24,7 +25,7 @@ export default function RootLayout({
         className={`${inter.variable} antialiased selection:bg-primary/20 selection:text-primary`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+          <SnipProvider>{children}</SnipProvider>
         </ThemeProvider>
       </body>
     </html>

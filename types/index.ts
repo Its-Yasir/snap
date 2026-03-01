@@ -1,23 +1,37 @@
 import { ReactNode } from "react";
 
 export interface Post {
-  id: string;
-  platform: string; // e.g., 'youtube', 'x'
+  id: number;
+  platform:
+    | "discord"
+    | "facebook"
+    | "instagram"
+    | "linkedIn"
+    | "pinterest"
+    | "reddit"
+    | "snapchat"
+    | "telegram"
+    | "tikTok"
+    | "whatsApp"
+    | "x"
+    | "youTube";
   type: string;
-  content: Record<string, unknown> | string;
+  images: imageInputType[];
+  text: textType[];
+  extra: extraNumeric[];
 }
 
 export interface BoardState {
   posts: Post[];
   settings: Settings;
   isSearching: boolean;
-  activePostId: string | null;
+  activePostId: number | null;
   addPost: (post: Post) => void;
-  updatePost: (id: string, updatedData: Partial<Post>) => void;
-  removePost: (id: string) => void;
+  updatePost: (id: number, updatedData: Partial<Post>) => void;
+  removePost: (id: number) => void;
   updateSettings: (newSettings: Partial<Settings>) => void;
   setIsSearching: (val: boolean) => void;
-  setActivePostId: (id: string | null) => void;
+  setActivePostId: (id: number | null) => void;
 }
 
 export interface Settings {

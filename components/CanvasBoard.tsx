@@ -4,7 +4,7 @@ import Main from "@/components/Main";
 import { useState, useEffect } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import Nav from "./Nav";
-import SideBar from "./SideBar";
+import SideBar from "./sidebar/SideBar";
 import { useBoardStore } from "@/store/useStore";
 
 export default function CanvasBoard() {

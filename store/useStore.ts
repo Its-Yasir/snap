@@ -23,7 +23,7 @@ export const useBoardStore = create<BoardState>()(
 
       addPost: (post) =>
         set((state) => {
-          if (state.posts.length >= 5) return state; // Max 5 posts limit
+          if (state.posts.length >= 5) return state;
           return { posts: [...state.posts, post] };
         }),
 
@@ -45,7 +45,7 @@ export const useBoardStore = create<BoardState>()(
         })),
     }),
     {
-      name: "board-storage", // This is the key in localStorage
+      name: "board-storage",
     },
   ),
 );

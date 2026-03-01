@@ -5,7 +5,10 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Plus, Trash2, Search } from "lucide-react";
 import { platformTypesData } from "@/data/types";
-import { Type } from "@/types";
+import { Data } from "@/data/data";
+import { Post, Type } from "@/types";
+import Snip from "@/components/shared/Snip";
+import { useSnipContext } from "@/context/SnipContext";
 
 const Main = () => {
   const {
@@ -19,8 +22,16 @@ const Main = () => {
     setActivePostId,
   } = useBoardStore((state) => state);
   const { Layout, boardColor, position } = settings;
+  const { setSelectedSnip } = useSnipContext();
 
-  const [focusedPostId, setFocusedPostId] = useState<string | null>(null);
+  useEffect(() => {
+    setSelectedSnip(activePostId || 0);
+  }, [activePostId, setSelectedSnip]);
+
+  const [focusedPostId, setFocusedPostId] = useState<number | null>(null);
+  const [searchQueries, setSearchQueries] = useState<Record<number, string>>(
+    {},
+  );
   const [hoveredPreview, setHoveredPreview] = useState<{
     url: string;
     name: string;
@@ -109,24 +120,43 @@ const Main = () => {
 
   useEffect(() => {
     if (posts.length === 0) {
-      addPost({
-        id: crypto.randomUUID(),
-        platform: "",
-        type: "empty",
-        content: "",
-      });
+      // Check the actual state to bypass Next.js SSR hydration closures
+      // where `posts` might temporarily be [] before Zustand synchronizes
+      const actualPosts = useBoardStore.getState().posts;
+      if (actualPosts.length === 0) {
+        addPost({
+          id: Date.now(),
+          platform: "discord",
+          type: "empty",
+          images: [],
+          text: [],
+          extra: [],
+        });
+      }
     }
   }, [posts.length, addPost]);
 
   const handleAddPost = () => {
     if (posts.length < 5) {
       addPost({
-        id: crypto.randomUUID(),
-        platform: "",
+        id: Date.now(),
+        platform: "discord",
         type: "empty",
-        content: "",
+        images: [],
+        text: [],
+        extra: [],
       });
     }
+  };
+
+  const getTypeObject = (
+    platformCode: string,
+    typeCode: string,
+  ): Type | undefined => {
+    const platformData = platformTypesData.find(
+      (p) => p.platform.code === platformCode,
+    );
+    return platformData?.types.find((t) => t.code === typeCode);
   };
 
   const getSearchResults = (query: string): Type[] => {
@@ -157,16 +187,24 @@ const Main = () => {
     return results;
   };
 
-  const handleSelectSearchResult = (postId: string, type: Type) => {
-    updatePost(postId, {
-      platform: type.platform.code,
+  const handleSelectSearchResult = (postId: number, type: Type) => {
+    const matchedData = Data.find(
+      (d) =>
+        d.platform.toLowerCase() === type.platform.code.toLowerCase() &&
+        d.type.toLowerCase() === type.code.toLowerCase(),
+    );
+
+    updatePost(Number(postId), {
+      platform: type.platform.code as Post["platform"],
       type: type.code,
-      content: type as unknown as Record<string, unknown>, // Storing the full Type object to render icon later
+      images: matchedData?.images || [],
+      text: matchedData?.text || [],
+      extra: matchedData?.extra || [],
     });
     setFocusedPostId(null);
     setIsSearching(false);
     setHoveredPreview(null);
-    setActivePostId(postId);
+    setActivePostId(Number(postId));
   };
 
   return (
@@ -186,7 +224,7 @@ const Main = () => {
         className={`flex gap-4 flex-wrap ${position === "vertical" ? "flex-col pb-32" : "flex-row w-full"}`}
       >
         {posts.map((post, index) => {
-          const query = typeof post.content === "string" ? post.content : "";
+          const query = searchQueries[post.id] || "";
           const results = getSearchResults(query);
           const showDropdown = focusedPostId === post.id && query.length > 0;
 
@@ -210,33 +248,37 @@ const Main = () => {
             >
               <div className="relative flex-1">
                 {post.type !== "empty" ? (
-                  <div
-                    className={`flex items-center gap-2 h-10 w-full rounded-md border px-3 py-2 text-sm font-medium truncate ${
-                      boardColor === "white"
-                        ? "bg-white border-gray-400 text-black"
-                        : "bg-background border-input text-foreground"
-                    }`}
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setActivePostId(post.id);
-                    }}
-                  >
-                    {typeof post.content === "object" &&
-                    post.content !== null ? (
-                      <>
-                        <div className="w-5 h-5 flex items-center justify-center shrink-0">
-                          {(post.content as unknown as Type).platform?.icon}
-                        </div>
-                        <span className="truncate">
-                          {(post.content as unknown as Type).name}
-                        </span>
-                      </>
-                    ) : typeof post.content === "string" ? (
-                      post.content
-                    ) : (
-                      ""
-                    )}
-                  </div>
+                  <>
+                    <div
+                      className={`flex w-full rounded-md border p-4 ${
+                        boardColor === "white"
+                          ? "bg-white border-gray-400 text-black"
+                          : "bg-background border-input text-foreground"
+                      }`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActivePostId(post.id);
+                      }}
+                    >
+                      {(() => {
+                        const typeObj = getTypeObject(post.platform, post.type);
+                        if (typeObj) {
+                          return (
+                            <>
+                              <div className="w-5 h-5 flex items-center justify-center shrink-0">
+                                {typeObj.platform.icon}
+                              </div>
+                              <span className="truncate ml-2">
+                                {typeObj.name}
+                              </span>
+                            </>
+                          );
+                        }
+                        return null;
+                      })()}
+                    </div>
+                    <Snip platform={post.platform} type={post.type} />
+                  </>
                 ) : (
                   <>
                     <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -247,7 +289,10 @@ const Main = () => {
                       }`}
                       value={query}
                       onChange={(e) =>
-                        updatePost(post.id, { content: e.target.value })
+                        setSearchQueries((prev) => ({
+                          ...prev,
+                          [post.id]: e.target.value,
+                        }))
                       }
                       onFocus={() => {
                         setFocusedPostId(post.id);
@@ -280,7 +325,7 @@ const Main = () => {
                           key={idx}
                           className={`group relative flex items-center gap-3 p-3 cursor-pointer transition-colors ${dropdownHover}`}
                           onClick={() =>
-                            handleSelectSearchResult(post.id, result)
+                            handleSelectSearchResult(Number(post.id), result)
                           }
                           onMouseEnter={(e) => {
                             if (result.imageUrl) {
