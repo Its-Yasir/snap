@@ -118,7 +118,11 @@ export default function SideBar() {
             <ImageEdit id={activePostId} />
           )}
         </div>
-        <div>{activeTool === "text" && activePostId && <TextEdit />}</div>
+        <div>
+          {activeTool === "text" && activePostId && (
+            <TextEdit id={activePostId} />
+          )}
+        </div>
         <div>{activeTool === "more" && activePostId && <MoreEdit />}</div>
       </div>
     </div>
