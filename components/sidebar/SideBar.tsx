@@ -27,19 +27,19 @@ export default function SideBar() {
 
   const sidebarColor =
     boardColor === "white"
-      ? "bg-white text-black border-gray-300 shadow-[0_0_15px_rgba(0,0,0,0.05)]"
-      : "bg-black text-white border-white/20 shadow-[0_0_15px_rgba(255,255,255,0.1)]";
+      ? "bg-white/70 backdrop-blur-md text-black border-neutral-200"
+      : "bg-black/70 backdrop-blur-md text-white border-white/10";
 
   const getButtonStyles = (toolName: string) => {
     const isActive = activeTool === toolName;
     if (boardColor === "white") {
       return isActive
-        ? "bg-[#00b958] text-white"
-        : "hover:bg-gray-100 text-black";
+        ? "bg-[#00b958] text-white shadow-sm scale-110"
+        : "hover:bg-neutral-100 text-neutral-600 hover:text-black";
     }
     return isActive
-      ? "bg-[#00b958] text-white"
-      : "text-gray-300 hover:bg-gray-800 hover:text-white";
+      ? "bg-[#00b958] text-white shadow-sm scale-110"
+      : "text-neutral-400 hover:bg-white/5 hover:text-white";
   };
 
   const handleToolClick = (toolName: string) => {
@@ -53,13 +53,15 @@ export default function SideBar() {
     >
       {/* Side Bar for Options */}
       <div
-        className={`${toolbarPadding} ${sidebarColor} rounded-lg shadow-2xl border text-sm font-medium transition-colors sidebar-container ${
-          !isEnabled ? "opacity-40 pointer-events-none grayscale" : ""
+        className={`${toolbarPadding} ${sidebarColor} rounded-2xl border text-sm font-medium transition-all duration-300 sidebar-container ${
+          !isEnabled ? "opacity-30 pointer-events-none grayscale" : ""
         }`}
       >
         {isEnabled && (
-          <div className="w-full text-center pb-2 border-b border-gray-500/30 mb-1 max-w-[80px] overflow-hidden">
-            <span className="text-xs font-semibold truncate block px-1"></span>
+          <div className="w-full text-center pb-2 border-b border-white/5 mb-1 max-w-[80px] overflow-hidden">
+            <span className="text-[10px] uppercase tracking-wider font-bold text-neutral-500 truncate block px-1">
+              Tools
+            </span>
           </div>
         )}
 
@@ -109,8 +111,8 @@ export default function SideBar() {
       </div>
       {/* Side Bar for Editing */}
       <div
-        className={`${toolbarPadding} ${sidebarColor} rounded-lg shadow-2xl border text-sm font-medium transition-colors sidebar-container ${
-          !isEnabled ? "opacity-40 pointer-events-none grayscale" : ""
+        className={`${toolbarPadding} ${sidebarColor} rounded-2xl border text-sm font-medium transition-all duration-300 sidebar-container ${
+          !isEnabled ? "opacity-30 pointer-events-none grayscale" : ""
         }`}
       >
         <div>
@@ -123,7 +125,11 @@ export default function SideBar() {
             <TextEdit id={activePostId} />
           )}
         </div>
-        <div>{activeTool === "more" && activePostId && <MoreEdit />}</div>
+        <div>
+          {activeTool === "more" && activePostId && (
+            <MoreEdit id={activePostId} />
+          )}
+        </div>
       </div>
     </div>
   );

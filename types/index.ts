@@ -41,6 +41,7 @@ export interface BoardState {
   ) => void;
   setImageUrl: (postId: number, imgIdx: number, url: string) => void;
   updatePostText: (postId: number, textIdx: number, newValue: string) => void;
+  updatePostExtra: (postId: number, extraIdx: number, newValue: number) => void;
 }
 
 export interface Settings {
@@ -90,6 +91,7 @@ export interface choice {
 export interface imageInputType {
   name: string;
   isHidden: boolean;
+  size: "small" | "large";
   url: string;
   input?: inputForImg;
 }

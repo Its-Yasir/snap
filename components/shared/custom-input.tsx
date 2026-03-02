@@ -71,32 +71,27 @@ const Inputt = ({
           )}
         />
       ) : (
-        <select
-          id={id}
-          value={currentValue || ""}
-          onChange={(e) => onChange?.(e.target.value)}
-          className={cn(
-            "flex h-9 w-full rounded-md border px-3 py-1 text-sm shadow-sm transition-colors outline-none",
-            "disabled:cursor-not-allowed disabled:opacity-50",
-            dark
-              ? "border-neutral-800 bg-neutral-900 text-neutral-100 placeholder:text-neutral-500"
-              : "border-neutral-200 bg-white text-neutral-900 placeholder:text-neutral-500",
-            currentValue
-              ? activeRing
-              : dark
-                ? "focus-visible:ring-1 focus-visible:ring-neutral-700"
-                : "focus-visible:ring-1 focus-visible:ring-neutral-300",
-          )}
-        >
-          <option value="" disabled>
-            {placeholer}
-          </option>
-          {options.map((c) => (
-            <option key={c.key} value={c.value}>
-              {c.value}
-            </option>
-          ))}
-        </select>
+        <div className="flex flex-wrap gap-2">
+          {options.map((c) => {
+            const isActive = currentValue === c.value;
+            return (
+              <button
+                key={c.key}
+                onClick={() => onChange?.(c.value)}
+                className={cn(
+                  "px-3 py-1.5 text-xs font-medium rounded-full border transition-all duration-200",
+                  isActive
+                    ? "bg-[#00b958] text-white border-[#00b958] shadow-sm"
+                    : dark
+                      ? "border-neutral-800 bg-neutral-900 text-neutral-400 hover:bg-neutral-800"
+                      : "border-neutral-200 bg-white text-neutral-600 hover:bg-neutral-50",
+                )}
+              >
+                {c.value}
+              </button>
+            );
+          })}
+        </div>
       )}
     </div>
   );

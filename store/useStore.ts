@@ -95,6 +95,22 @@ export const useBoardStore = create<BoardState>()(
             return post;
           }),
         })),
+      updatePostExtra: (postId, extraIdx, newValue) =>
+        set((state) => ({
+          posts: state.posts.map((post) => {
+            if (post.id === postId) {
+              const newExtra = [...post.extra];
+              if (newExtra[extraIdx]) {
+                newExtra[extraIdx] = {
+                  ...newExtra[extraIdx],
+                  current: newValue,
+                };
+              }
+              return { ...post, extra: newExtra };
+            }
+            return post;
+          }),
+        })),
     }),
     {
       name: "board-storage",

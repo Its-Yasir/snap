@@ -8,7 +8,8 @@ export const Data: DataType = [
       {
         name: "Profile Image",
         url: "/zohaib.png",
-        isHidden: false,
+        isHidden: true,
+        size: "small",
         input: {
           label: "Enter profile URL or username:",
           placeholder: "https://discord.com/zohiab_yousaf or user_name",
@@ -64,6 +65,7 @@ export const Data: DataType = [
         name: "Thumbnail",
         isHidden: true,
         url: "/thumbnail1.png",
+        size: "large",
         input: {
           label: "Enter a video URL:",
           placeholder: "https://youtube.com/watch?v=123...",
@@ -72,6 +74,7 @@ export const Data: DataType = [
       {
         name: "Channel Logo",
         isHidden: true,
+        size: "large",
         url: "/zohaib.png",
         input: {
           label: "Enter a channel URL:",
