@@ -41,6 +41,23 @@ export const useBoardStore = create<BoardState>()(
           posts: state.posts.filter((p) => p.id !== id),
         })),
 
+      updatePostText: (postId: number, textIdx: number, newValue: string) =>
+        set((state) => ({
+          posts: state.posts.map((post) => {
+            if (post.id === postId) {
+              const newText = [...post.text];
+              if (newText[textIdx]) {
+                newText[textIdx] = {
+                  ...newText[textIdx],
+                  currentValue: newValue,
+                };
+              }
+              return { ...post, text: newText };
+            }
+            return post;
+          }),
+        })),
+
       updateSettings: (newSettings) =>
         set((state) => ({
           settings: { ...state.settings, ...newSettings },

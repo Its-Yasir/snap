@@ -40,6 +40,7 @@ export interface BoardState {
     isHidden: boolean,
   ) => void;
   setImageUrl: (postId: number, imgIdx: number, url: string) => void;
+  updatePostText: (postId: number, textIdx: number, newValue: string) => void;
 }
 
 export interface Settings {

@@ -44,7 +44,7 @@ const Inputt = ({
       <label
         htmlFor={id}
         className={cn(
-          "text-sm font-medium",
+          "text-lg font-normal",
           dark ? "text-neutral-200" : "text-neutral-700",
         )}
       >
