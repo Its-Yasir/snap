@@ -10,6 +10,7 @@ import {
 import ImageEdit from "@/components/sidebar/iamge-edit";
 import TextEdit from "@/components/sidebar/text-edit";
 import MoreEdit from "@/components/sidebar/more-edit";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function SideBar() {
   const { settings, activePostId, posts } = useBoardStore((state) => state);
@@ -115,21 +116,38 @@ export default function SideBar() {
           !isEnabled ? "opacity-30 pointer-events-none grayscale" : ""
         }`}
       >
-        <div>
+        <AnimatePresence mode="wait">
           {activeTool === "images" && activePostId && (
-            <ImageEdit id={activePostId} />
+            <motion.div
+              key={`images-${activePostId}`}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+            >
+              <ImageEdit id={activePostId} />
+            </motion.div>
           )}
-        </div>
-        <div>
           {activeTool === "text" && activePostId && (
-            <TextEdit id={activePostId} />
+            <motion.div
+              key={`text-${activePostId}`}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+            >
+              <TextEdit id={activePostId} />
+            </motion.div>
           )}
-        </div>
-        <div>
           {activeTool === "more" && activePostId && (
-            <MoreEdit id={activePostId} />
+            <motion.div
+              key={`more-${activePostId}`}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+            >
+              <MoreEdit id={activePostId} />
+            </motion.div>
           )}
-        </div>
+        </AnimatePresence>
       </div>
     </div>
   );
