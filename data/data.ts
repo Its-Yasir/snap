@@ -1,7 +1,7 @@
 import { DataType } from "@/types";
 
 export const Data: DataType = [
-  //Discord:
+  //😎Discord:
   {
     platform: "discord",
     types: [
@@ -271,6 +271,57 @@ export const Data: DataType = [
       },
     ],
   },
+
+  //🅿️Pinterest:
+  {
+    platform: "pinterest",
+    types: [
+      {
+        type: "vertical post",
+        images: [
+          {
+            name: "Post Content",
+            url: "/vertical.png",
+            isHidden: true,
+            size: "large",
+            input: {
+              label: "Enter Post URL:",
+              placeholder: "https://pinterest.com/zohiab_yousaf or user_name",
+            },
+          },
+        ],
+        extra: [
+          { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+          { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+          { name: "Theme", min: 0, max: 1, current: 1 },
+          { name: "Video", min: 0, max: 1, current: 1 },
+        ],
+      },
+      {
+        type: "square post",
+        images: [
+          {
+            name: "Post Content",
+            url: "/zohaib.png",
+            isHidden: true,
+            size: "large",
+            input: {
+              label: "Enter Post URL:",
+              placeholder: "https://pinterest.com/zohiab_yousaf or user_name",
+            },
+          },
+        ],
+        extra: [
+          { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+          { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+          { name: "Theme", min: 0, max: 1, current: 1 },
+          { name: "Video", min: 0, max: 1, current: 1 },
+        ],
+      },
+    ],
+  },
+
+  //▶️Youtube:
   {
     platform: "youTube",
     types: [

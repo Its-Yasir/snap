@@ -31,9 +31,14 @@ export const pinterestTypes: Type[] = [
     name: "Vertical Post",
     code: "vertical post",
     platform: platforms[4],
+    imageUrl: "/vertical.png",
+  },
+  {
+    name: "Square Post",
+    code: "square post",
+    platform: platforms[4],
     imageUrl: "/zohaib.png",
   },
-  { name: "Horizontal Post", code: "horizontal post", platform: platforms[4] },
 ];
 
 export const redditTypes: Type[] = [

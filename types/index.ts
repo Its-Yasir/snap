@@ -114,7 +114,7 @@ export interface extraNumeric {
 export type TypeDataDetail = {
   type: string;
   images: imageInputType[];
-  text: textType[];
+  text?: textType[];
   extra: extraNumeric[];
 };
 

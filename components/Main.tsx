@@ -191,10 +191,11 @@ const Main = () => {
   };
 
   const handleSelectSearchResult = (postId: number, type: Type) => {
-    const matchedData = Data.find(
-      (d) =>
-        d.platform.toLowerCase() === type.platform.code.toLowerCase() &&
-        d.type.toLowerCase() === type.code.toLowerCase(),
+    const matchedPlatform = Data.find(
+      (d) => d.platform.toLowerCase() === type.platform.code.toLowerCase(),
+    );
+    const matchedData = matchedPlatform?.types.find(
+      (t) => t.type.toLowerCase() === type.code.toLowerCase(),
     );
 
     updatePost(Number(postId), {
