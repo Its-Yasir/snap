@@ -2,7 +2,7 @@ import React from "react";
 import { useBoardStore } from "@/store/useStore";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Trash2, RotateCcw, Minus, Plus } from "lucide-react";
+import { RotateCcw, Minus, Plus } from "lucide-react";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import ElasticSlider from "@/components/ui/elastic-slider";
 
@@ -11,18 +11,12 @@ interface MoreEditProps {
 }
 
 const MoreEdit = ({ id }: MoreEditProps) => {
-  const { posts, updatePostExtra, removePost, settings, setActivePostId } =
-    useBoardStore((state) => state);
+  const { posts, updatePostExtra, settings } = useBoardStore((state) => state);
   const currentSnip = posts.find((p) => p.id === id);
   const extra = currentSnip?.extra;
   const isDark = settings.boardColor !== "white";
 
   if (!extra) return null;
-
-  const handleRemove = () => {
-    removePost(id);
-    setActivePostId(null);
-  };
 
   const hasAnyModifiedDefaults = extra.some(
     (ex) => ex.default !== undefined && ex.current !== ex.default,
@@ -183,16 +177,7 @@ const MoreEdit = ({ id }: MoreEditProps) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: extra.length * 0.05 + 0.1 }}
             className="pt-4 border-t border-neutral-800/50"
-          >
-            <Button
-              variant="destructive"
-              onClick={handleRemove}
-              className="w-full flex items-center justify-center gap-2 h-11 bg-red-500/5 hover:bg-red-500 text-red-500 hover:text-white border border-red-500/20 hover:border-red-500 transition-all duration-300 font-bold tracking-tight shadow-sm"
-            >
-              <Trash2 size={16} />
-              <span>Remove Post</span>
-            </Button>
-          </motion.div>
+          ></motion.div>
         </AnimatePresence>
       </div>
     </ScrollArea>
