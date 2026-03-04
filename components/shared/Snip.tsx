@@ -7,13 +7,14 @@ interface SnipProps {
 
 const Snip = ({ platform, type }: SnipProps) => {
   //Getting matching Data for platform and type
-  const matchedPlatforms = Data.filter(
+  const matchedPlatform = Data.find(
     (d) => d.platform.toLowerCase() === platform.toLowerCase(),
   );
+
   let matchedType;
-  if (matchedPlatforms.length > 0) {
-    matchedType = matchedPlatforms.find(
-      (p) => p.type.toLowerCase() === type.toLowerCase(),
+  if (matchedPlatform) {
+    matchedType = matchedPlatform.types.find(
+      (t) => t.type.toLowerCase() === type.toLowerCase(),
     );
   } else {
     return <div>No Data for {platform}</div>;

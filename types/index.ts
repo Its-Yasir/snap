@@ -111,6 +111,13 @@ export interface extraNumeric {
   default?: number;
 }
 
+export type TypeDataDetail = {
+  type: string;
+  images: imageInputType[];
+  text: textType[];
+  extra: extraNumeric[];
+};
+
 export type DataType = {
   platform:
     | "discord"
@@ -125,8 +132,5 @@ export type DataType = {
     | "whatsApp"
     | "x"
     | "youTube";
-  type: string;
-  images: imageInputType[];
-  text: textType[];
-  extra: extraNumeric[];
+  types: TypeDataDetail[];
 }[];
