@@ -90,6 +90,7 @@ export interface choice {
 
 export interface imageInputType {
   name: string;
+  info?: string;
   isHidden: boolean;
   size: "small" | "large";
   url: string;
@@ -98,6 +99,7 @@ export interface imageInputType {
 
 export interface textType {
   type: "text" | "choice";
+  info?: string;
   currentValue: string;
   choices?: choice[];
   input: inputForText;

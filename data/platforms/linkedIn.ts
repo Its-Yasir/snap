@@ -148,7 +148,89 @@ export const linkedIn: DataType[number] = {
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
         { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "User open to work?", min: 0, max: 1, current: 0 },
         { name: "Video", min: 0, max: 1, current: 1 },
+      ],
+    },
+    {
+      type: "mini profile",
+      images: [
+        {
+          name: "Profile Background",
+          url: "/horizontal.png",
+          isHidden: true,
+          size: "large",
+          input: {
+            label: "Enter Profile URL:",
+            placeholder: "https://linkedin.com/in/user_name",
+          },
+        },
+        {
+          name: "User Profile Image",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter Profile URL:",
+            placeholder: "https://linkedin.com/in/user_name",
+          },
+        },
+        {
+          name: "Current Company Image",
+          info: "You can turn company off in more setings",
+          url: "/linkedCompany.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter Post URL:",
+            placeholder: "https://linkedin.com/in/user_name",
+          },
+        },
+      ],
+      text: [
+        {
+          type: "text",
+          currentValue: "Zohaib Yousaf",
+          input: {
+            title: "Username",
+            label: "Enter Linkedin user's name:",
+            placeholder: "User's name",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "Full time web developer @ whythings.dev",
+          input: {
+            title: "HEadline",
+            label: "Enter Linkedin user's headline:",
+            placeholder: "A little more details of user",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "Lahore, Pakistan",
+          input: {
+            title: "Location",
+            label: "Enter Linkedin user's location:",
+            placeholder: "City, State or Country",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "whythings.dev",
+          input: {
+            title: "Current Company Name",
+            label: "Enter Linkedin user's current company:",
+            placeholder: "Company he is working on",
+          },
+        },
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Is open to work?", min: 0, max: 1, current: 0 },
+        { name: "Show Campany?", min: 0, max: 1, current: 1 },
       ],
     },
   ],
