@@ -72,49 +72,49 @@ export default function CopyPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white p-8 md:p-12 font-sans selection:bg-purple-500/30">
-      <div className="max-w-4xl mx-auto space-y-12">
-        <header className="space-y-4">
-          <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight bg-linear-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent pb-1">
+    <div className="min-h-screen bg-[#0a0a0a] text-white p-4 md:p-6 lg:p-8 font-sans flex flex-col justify-center selection:bg-purple-500/30">
+      <div className="max-w-6xl w-full mx-auto space-y-6">
+        <header className="space-y-2">
+          <h1 className="text-3xl md:text-4xl font-extrabold tracking-tight bg-linear-to-r from-purple-400 to-pink-600 bg-clip-text text-transparent pb-1">
             Configurations
           </h1>
-          <p className="text-neutral-400 text-lg">
+          <p className="text-neutral-400 text-base">
             Click the copy button on the top right corner of each block to copy
             its content to your clipboard.
           </p>
         </header>
 
-        <div className="grid gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
           {codeBlocks.map((code, index) => (
             <div
               key={index}
               className="group relative bg-[#111] rounded-2xl border border-neutral-800 overflow-hidden shadow-2xl transition-all duration-300 hover:border-neutral-700 hover:shadow-purple-500/10"
             >
-              <div className="flex justify-between items-center px-4 py-3 bg-[#161616] border-b border-neutral-800">
-                <div className="flex gap-2 items-center">
-                  <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
+              <div className="flex justify-between items-center px-3 py-2 bg-[#161616] border-b border-neutral-800">
+                <div className="flex gap-1.5 items-center">
+                  <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                  <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
                 </div>
                 <button
                   onClick={() => handleCopy(code, index)}
-                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/5 hover:bg-white/10 text-neutral-300 transition-all text-sm font-medium"
+                  className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/5 hover:bg-white/10 text-neutral-300 transition-all text-xs font-medium"
                 >
                   {copiedIndex === index ? (
                     <>
-                      <Check className="w-4 h-4 text-emerald-400" />
+                      <Check className="w-3.5 h-3.5 text-emerald-400" />
                       <span className="text-emerald-400">Copied</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-4 h-4" />
+                      <Copy className="w-3.5 h-3.5" />
                       <span>Copy</span>
                     </>
                   )}
                 </button>
               </div>
-              <div className="p-6 overflow-x-auto">
-                <pre className="font-mono text-[13.5px] sm:text-sm leading-relaxed text-neutral-300">
+              <div className="p-4 overflow-x-auto">
+                <pre className="font-mono text-[11px] sm:text-xs leading-relaxed text-neutral-300">
                   <code
                     dangerouslySetInnerHTML={{ __html: renderCode(code) }}
                   />
