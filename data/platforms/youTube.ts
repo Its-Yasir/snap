@@ -1,5 +1,4 @@
 import { DataType } from "@/types";
-import { commonExtra } from "../helpers";
 
 export const youTube: DataType[number] = {
   platform: "youTube",
@@ -75,14 +74,17 @@ export const youTube: DataType[number] = {
           },
         },
       ],
-      extra: commonExtra([
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
         { name: "Show Views", min: 0, max: 1, current: 1 },
         { name: "Show Video Age", min: 0, max: 1, current: 1 },
         { name: "Show Subscribers", min: 0, max: 1, current: 1 },
         { name: "Show Duration", min: 0, max: 1, current: 1 },
         { name: "Show Timeline", min: 0, max: 1, current: 1 },
         { name: "Video played", min: 1, max: 100, current: 34 },
-      ]),
+      ],
     },
   ],
 };

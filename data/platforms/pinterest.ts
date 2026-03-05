@@ -1,18 +1,49 @@
 import { DataType } from "@/types";
-import { commonExtra, postContentImage } from "../helpers";
 
 export const pinterest: DataType[number] = {
   platform: "pinterest",
   types: [
     {
       type: "vertical post",
-      images: [postContentImage("/vertical.png")],
-      extra: commonExtra([{ name: "Video", min: 0, max: 1, current: 1 }]),
+      images: [
+        {
+          name: "Post Content",
+          url: "/vertical.png",
+          isHidden: true,
+          size: "large",
+          input: {
+            label: "Enter Post URL:",
+            placeholder: "URL to the post",
+          },
+        },
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Video", min: 0, max: 1, current: 1 },
+      ],
     },
     {
       type: "square post",
-      images: [postContentImage("/zohaib.png")],
-      extra: commonExtra([{ name: "Video", min: 0, max: 1, current: 1 }]),
+      images: [
+        {
+          name: "Post Content",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "large",
+          input: {
+            label: "Enter Post URL:",
+            placeholder: "URL to the post",
+          },
+        },
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Video", min: 0, max: 1, current: 1 },
+      ],
     },
   ],
 };

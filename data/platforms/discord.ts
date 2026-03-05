@@ -1,12 +1,4 @@
 import { DataType } from "@/types";
-import {
-  commonExtra,
-  profileImage,
-  backgroundImage,
-  fullNameText,
-  usernameText,
-  statusChoice,
-} from "../helpers";
 
 export const discord: DataType[number] = {
   platform: "discord",
@@ -14,24 +6,150 @@ export const discord: DataType[number] = {
     //profile bar
     {
       type: "profile bar",
-      images: [profileImage()],
-      text: [fullNameText(), usernameText(), statusChoice()],
-      extra: commonExtra(),
+      images: [
+        {
+          name: "Profile Image",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter profile URL or username:",
+            placeholder: "https://discord.com/zohiab_yousaf or user_name",
+          },
+        },
+      ],
+      text: [
+        {
+          type: "text",
+          currentValue: "Zohaib Yousaf",
+          input: {
+            title: "Full Name",
+            label: "Enter full name:",
+            placeholder: "Your name",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "zohaib_yousaf",
+          input: {
+            title: "Username",
+            label: `Enter discord username:`,
+            placeholder: "user_name",
+          },
+        },
+        {
+          type: "choice",
+          currentValue: "online",
+          choices: [
+            { key: "online", value: "Online" },
+            { key: "dnd", value: "Do Not Disturb" },
+            { key: "idle", value: "Idle" },
+            { key: "offline", value: "Offline" },
+          ],
+          input: {
+            title: "User Status",
+            label: "Enter user status:",
+            placeholder: "Choose user status",
+          },
+        },
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+      ],
     },
     //mini profile bar
     {
       type: "mini profile bar",
-      images: [profileImage()],
-      text: [fullNameText(), statusChoice()],
-      extra: commonExtra(),
+      images: [
+        {
+          name: "Profile Image",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter profile URL or username:",
+            placeholder: "https://discord.com/zohiab_yousaf or user_name",
+          },
+        },
+      ],
+      text: [
+        {
+          type: "text",
+          currentValue: "Zohaib Yousaf",
+          input: {
+            title: "Full Name",
+            label: "Enter full name:",
+            placeholder: "Your name",
+          },
+        },
+        {
+          type: "choice",
+          currentValue: "online",
+          choices: [
+            { key: "online", value: "Online" },
+            { key: "dnd", value: "Do Not Disturb" },
+            { key: "idle", value: "Idle" },
+            { key: "offline", value: "Offline" },
+          ],
+          input: {
+            title: "User Status",
+            label: "Enter user status:",
+            placeholder: "Choose user status",
+          },
+        },
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+      ],
     },
     //profile details
     {
       type: "profile details",
-      images: [profileImage(), backgroundImage()],
+      images: [
+        {
+          name: "Profile Image",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter profile URL or username:",
+            placeholder: "https://discord.com/zohiab_yousaf or user_name",
+          },
+        },
+        {
+          name: "Background Image",
+          url: "/bg.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter profile URL or username:",
+            placeholder: "https://discord.com/zohiab_yousaf or user_name",
+          },
+        },
+      ],
       text: [
-        fullNameText(),
-        usernameText("zohaib_yousaf"),
+        {
+          type: "text",
+          currentValue: "Zohaib Yousaf",
+          input: {
+            title: "Full Name",
+            label: "Enter full name:",
+            placeholder: "Your name",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "zohaib_yousaf",
+          input: {
+            title: "Username",
+            label: `Enter discord username:`,
+            placeholder: "user_name",
+          },
+        },
         {
           type: "text",
           currentValue: "Oct 3, 2025",
@@ -59,16 +177,95 @@ export const discord: DataType[number] = {
             placeholder: "0000",
           },
         },
-        statusChoice(),
+        {
+          type: "choice",
+          currentValue: "online",
+          choices: [
+            { key: "online", value: "Online" },
+            { key: "dnd", value: "Do Not Disturb" },
+            { key: "idle", value: "Idle" },
+            { key: "offline", value: "Offline" },
+          ],
+          input: {
+            title: "User Status",
+            label: "Enter user status:",
+            placeholder: "Choose user status",
+          },
+        },
       ],
-      extra: commonExtra([{ name: "Friend", min: 0, max: 1, current: 1 }]),
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Friend", min: 0, max: 1, current: 1 },
+      ],
     },
     //profile card
     {
       type: "profile card",
-      images: [profileImage(), backgroundImage()],
-      text: [fullNameText(), usernameText(), statusChoice()],
-      extra: commonExtra([{ name: "Friend", min: 0, max: 1, current: 1 }]),
+      images: [
+        {
+          name: "Profile Image",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter profile URL or username:",
+            placeholder: "https://discord.com/zohiab_yousaf or user_name",
+          },
+        },
+        {
+          name: "Background Image",
+          url: "/bg.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter profile URL or username:",
+            placeholder: "https://discord.com/zohiab_yousaf or user_name",
+          },
+        },
+      ],
+      text: [
+        {
+          type: "text",
+          currentValue: "Zohaib Yousaf",
+          input: {
+            title: "Full Name",
+            label: "Enter full name:",
+            placeholder: "Your name",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "zohaib_yousaf",
+          input: {
+            title: "Username",
+            label: `Enter discord username:`,
+            placeholder: "user_name",
+          },
+        },
+        {
+          type: "choice",
+          currentValue: "online",
+          choices: [
+            { key: "online", value: "Online" },
+            { key: "dnd", value: "Do Not Disturb" },
+            { key: "idle", value: "Idle" },
+            { key: "offline", value: "Offline" },
+          ],
+          input: {
+            title: "User Status",
+            label: "Enter user status:",
+            placeholder: "Choose user status",
+          },
+        },
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Friend", min: 0, max: 1, current: 1 },
+      ],
     },
   ],
 };

@@ -1,10 +1,4 @@
 import { DataType } from "@/types";
-import {
-  commonExtra,
-  profileImage,
-  postContentImage,
-  usernameText,
-} from "../helpers";
 
 export const linkedIn: DataType[number] = {
   platform: "linkedIn",
@@ -12,10 +6,21 @@ export const linkedIn: DataType[number] = {
     {
       type: "post",
       images: [
-        postContentImage("/horizontal.png"),
         {
-          ...profileImage("/zohaib.png"),
+          name: "Post Content",
+          url: "/horizontal.png",
+          isHidden: true,
+          size: "large",
+          input: {
+            label: "Enter Post URL:",
+            placeholder: "URL to the post",
+          },
+        },
+        {
           name: "User Profile Image",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
           input: {
             label: "Enter Profile URL:",
             placeholder: "https://linkedin.com/in/username",
@@ -24,7 +29,8 @@ export const linkedIn: DataType[number] = {
       ],
       text: [
         {
-          ...usernameText("Zohaib Yousaf", "Linkedin"),
+          type: "text",
+          currentValue: "Zohaib Yousaf",
           input: {
             title: "Username",
             label: "Enter Linkedin user's name:",
@@ -138,7 +144,12 @@ export const linkedIn: DataType[number] = {
           },
         },
       ],
-      extra: commonExtra([{ name: "Video", min: 0, max: 1, current: 1 }]),
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Video", min: 0, max: 1, current: 1 },
+      ],
     },
   ],
 };
