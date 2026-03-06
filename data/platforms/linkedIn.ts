@@ -1,5 +1,4 @@
 import { DataType } from "@/types";
-
 export const linkedIn: DataType[number] = {
   platform: "linkedIn",
   types: [
@@ -354,6 +353,60 @@ export const linkedIn: DataType[number] = {
         { name: "Premium user", min: 0, max: 1, current: 0 },
         { name: "Open to work", min: 0, max: 1, current: 0 },
         { name: "Verified", min: 0, max: 1, current: 1 },
+      ],
+    },
+    //Job:
+    {
+      type: "job",
+      images: [        {
+          name: "Compnay Image",
+          url: "/linkedin-company.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter Company URL:",
+            placeholder: "URL to the company",
+          },
+        }],
+      text: [
+        {
+          type: "text",
+          currentValue: "Fulltime web developer @ whythings.dev",
+          input: {
+            title: "Job Title",
+            label: "Enter Linkedin job's title:",
+            placeholder: "Job's title",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "Lahore, Pakistan (Remote)",
+          input: {
+            title: "Location",
+            label: "Enter Linkedin job's location:",
+            placeholder: "City, state or country",
+          },
+        },
+                {
+          type: "text",
+          currentValue: "4 days ago",
+          input: {
+            title: "Posted Date",
+            label: "Enter Linkedin job's posted date:",
+            placeholder: "00 days ago or 00 months ago",
+          },
+        }
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Verified company", min: 0, max: 1, current: 1 },
+        { name: "Promoted job", min: 0, max: 1, current: 0 },
+        {name: "Active job", min: 0, max: 1, current: 0 },
+        {name: "Promoted job", min: 0, max: 1, current: 0 },
+        {name: "Easy apply", min: 0, max: 1, current: 0 },
+        
       ],
     },
   ],
