@@ -98,9 +98,9 @@ export interface imageInputType {
 }
 
 export interface textType {
-  type: "text" | "choice";
+  type: "text" | "choice" | "number";
   info?: string;
-  currentValue: string;
+  currentValue: string | number;
   choices?: choice[];
   input: inputForText;
 }

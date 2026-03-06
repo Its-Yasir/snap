@@ -300,8 +300,8 @@ export const linkedIn: DataType[number] = {
           },
         },
         {
-          type: "text",
-          currentValue: "1012",
+          type: "number",
+          currentValue: 1012,
           input: {
             title: "Followers",
             label: "Enter Linkedin user's followers:",
@@ -309,8 +309,8 @@ export const linkedIn: DataType[number] = {
           },
         },
         {
-          type: "text",
-          currentValue: "501",
+          type: "number",
+          currentValue: 501,
           input: {
             title: "Connections",
             label: "Enter Linkedin user's connections:",

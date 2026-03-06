@@ -6,7 +6,7 @@ import { useId } from "react";
 export interface CustomInputProps {
   placeholer: string;
   label: string;
-  type: "text" | "choice";
+  type: "text" | "choice" | "number";
   currentValue: string;
   choices?: choice[];
   onChange?: (val: string) => void;
@@ -50,10 +50,10 @@ const Inputt = ({
       >
         {label}
       </label>
-      {type === "text" ? (
+      {type === "text" || type === "number" ? (
         <input
           id={id}
-          type="text"
+          type={type}
           value={currentValue || ""}
           onChange={(e) => onChange?.(e.target.value)}
           placeholder={placeholer}
