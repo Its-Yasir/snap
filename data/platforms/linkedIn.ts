@@ -358,7 +358,8 @@ export const linkedIn: DataType[number] = {
     //Job:
     {
       type: "job",
-      images: [        {
+      images: [
+        {
           name: "Compnay Image",
           url: "/linkedin-company.png",
           isHidden: true,
@@ -367,7 +368,8 @@ export const linkedIn: DataType[number] = {
             label: "Enter Company URL:",
             placeholder: "URL to the company",
           },
-        }],
+        },
+      ],
       text: [
         {
           type: "text",
@@ -380,6 +382,15 @@ export const linkedIn: DataType[number] = {
         },
         {
           type: "text",
+          currentValue: "whythings.dev",
+          input: {
+            title: "Company Name",
+            label: "Enter Linkedin job's company name:",
+            placeholder: "Company name",
+          },
+        },
+        {
+          type: "text",
           currentValue: "Lahore, Pakistan (Remote)",
           input: {
             title: "Location",
@@ -387,7 +398,7 @@ export const linkedIn: DataType[number] = {
             placeholder: "City, state or country",
           },
         },
-                {
+        {
           type: "text",
           currentValue: "4 days ago",
           input: {
@@ -395,7 +406,7 @@ export const linkedIn: DataType[number] = {
             label: "Enter Linkedin job's posted date:",
             placeholder: "00 days ago or 00 months ago",
           },
-        }
+        },
       ],
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
@@ -403,10 +414,107 @@ export const linkedIn: DataType[number] = {
         { name: "Theme", min: 0, max: 1, current: 1 },
         { name: "Verified company", min: 0, max: 1, current: 1 },
         { name: "Promoted job", min: 0, max: 1, current: 0 },
-        {name: "Active job", min: 0, max: 1, current: 0 },
-        {name: "Promoted job", min: 0, max: 1, current: 0 },
-        {name: "Easy apply", min: 0, max: 1, current: 0 },
-        
+        { name: "Active job", min: 0, max: 1, current: 0 },
+        { name: "Promoted job", min: 0, max: 1, current: 0 },
+        { name: "Easy apply", min: 0, max: 1, current: 0 },
+      ],
+    },
+    //comment:
+    {
+      type: "comment",
+      images: [
+        {
+          name: "User profile image",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter Profile URL:",
+            placeholder: "URL to the profile",
+          },
+        },
+      ],
+      text: [
+        {
+          type: "text",
+          currentValue: "Zohaib Yousaf",
+          input: {
+            title: "Username",
+            label: "Enter Linkedin user's name:",
+            placeholder: "User's name",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "Web developer @ whythings.dev",
+          input: {
+            title: "Headline",
+            label: "Enter Linkedin user's headline:",
+            placeholder: "User's headline",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "Good work!",
+          input: {
+            title: "Comment content",
+            label: "Enter  user's comment:",
+            placeholder: "User's text content",
+          },
+        },
+        {
+          type: "number",
+          currentValue: 12,
+          input: {
+            title: "Reactions",
+            label: "Enter number of reactions:",
+            placeholder: "comment's reactions",
+          },
+        },
+        {
+          type: "choice",
+          currentValue: "1st",
+          choices: [
+            { key: "1st", value: "1st" },
+            { key: "2nd", value: "2nd" },
+            { key: "3rd", value: "3rd" },
+          ],
+          input: {
+            title: "User's connection degree",
+            label: "Chose connection degree:",
+            placeholder: "1st, 2nd or 3rd",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "18h",
+          input: {
+            title: "Comment Age",
+            label: "Enter comment post age:",
+            placeholder: "00h or 00d or 00m",
+          },
+        },
+        {
+          type: "choice",
+          currentValue: "1",
+          choices: [
+            { key: "1", value: "1" },
+            { key: "2", value: "2" },
+            { key: "3", value: "3" },
+          ],
+          input: {
+            title: "Recation types",
+            label: "Chose reaction types:",
+            placeholder: "1, 2 or 3",
+          },
+        },
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Author", min: 0, max: 1, current: 0 },
+        { name: "Reacted", min: 0, max: 1, current: 0 },
       ],
     },
   ],
