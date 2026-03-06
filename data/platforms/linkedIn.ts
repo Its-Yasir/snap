@@ -3,6 +3,7 @@ import { DataType } from "@/types";
 export const linkedIn: DataType[number] = {
   platform: "linkedIn",
   types: [
+    //Post:
     {
       type: "post",
       images: [
@@ -152,6 +153,7 @@ export const linkedIn: DataType[number] = {
         { name: "Video", min: 0, max: 1, current: 1 },
       ],
     },
+    //Mini Profile
     {
       type: "mini profile",
       images: [
@@ -231,6 +233,127 @@ export const linkedIn: DataType[number] = {
         { name: "Theme", min: 0, max: 1, current: 1 },
         { name: "Is open to work?", min: 0, max: 1, current: 0 },
         { name: "Show Campany?", min: 0, max: 1, current: 1 },
+      ],
+    },
+    //Main Profile:
+    {
+      type: "main profile",
+      images: [
+        {
+          name: "Banner Image",
+          url: "/horizontal.png",
+          isHidden: true,
+          size: "large",
+          input: {
+            label: "Enter Profile URL:",
+            placeholder: "URL to the profile",
+          },
+        },
+        {
+          name: "Profile Image",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter Profile URL:",
+            placeholder: "URL to the profile",
+          },
+        },
+        {
+          name: "Company Image",
+          url: "/linkedin-company.png",
+          info: "You can turn off company visibility in extra settings",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter Company URL:",
+            placeholder: "URL to the company",
+          },
+        },
+      ],
+      text: [
+        {
+          type: "text",
+          currentValue: "Zohaib Yousaf",
+          input: {
+            title: "Username",
+            label: "Enter Linkedin user's name:",
+            placeholder: "User's name",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "Fulltime web developer @ whythings.dev",
+          input: {
+            title: "Headline",
+            label: "Enter Linkedin user's headline:",
+            placeholder: "User's headline",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "Lahore, Pakistan",
+          input: {
+            title: "Location",
+            label: "Enter user's location:",
+            placeholder: "City, state or country",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "1012",
+          input: {
+            title: "Followers",
+            label: "Enter Linkedin user's followers:",
+            placeholder: "User's followers",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "501",
+          input: {
+            title: "Connections",
+            label: "Enter Linkedin user's connections:",
+            placeholder: "User's connections",
+          },
+        },
+        {
+          type: "choice",
+          currentValue: "Connect",
+          choices: [
+            { key: "connect", value: "Connect" },
+            { key: "follow", value: "Follow" },
+            { key: "pending", value: "Pending" },
+            { key: "nothing", value: "Nothing" },
+          ],
+          input: {
+            title: "Follow-up button",
+            label: "Chose button type:",
+            placeholder: "Chose one of the following",
+          },
+        },
+        {
+          type: "choice",
+          currentValue: "1st",
+          choices: [
+            { key: "1st", value: "1st" },
+            { key: "2nd", value: "2nd" },
+            { key: "3rd", value: "3rd" },
+          ],
+          input: {
+            title: "User's connection degree",
+            label: "Chose connection degree:",
+            placeholder: "1st, 2nd or 3rd",
+          },
+        },
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Premium user", min: 0, max: 1, current: 0 },
+        { name: "Open to work", min: 0, max: 1, current: 0 },
+        { name: "Verified", min: 0, max: 1, current: 1 },
       ],
     },
   ],
