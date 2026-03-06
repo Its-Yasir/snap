@@ -515,6 +515,69 @@ export const linkedIn: DataType[number] = {
         { name: "Theme", min: 0, max: 1, current: 1 },
         { name: "Author", min: 0, max: 1, current: 0 },
         { name: "Reacted", min: 0, max: 1, current: 0 },
+        { name: "Open to work", min: 0, max: 1, current: 0 },
+      ],
+    },
+    //Connection request:
+    {
+      type: "connection request",
+      images: [
+        {
+          name: "User's Profile Image",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter Profile URL:",
+            placeholder: "URL to the profile",
+          },
+        },
+      ],
+      text: [
+        {
+          type: "text",
+          currentValue: "Zohaib Yousaf",
+          input: {
+            title: "Username",
+            label: "Enter Linkedin user's name:",
+            placeholder: "User's name",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "Web developer @ whythings.dev",
+          input: {
+            title: "Headline",
+            label: "Enter  user's headline:",
+            placeholder: "User's headline",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "Yasir Ali",
+          info: "You can turn off the mutual connection in extra settings",
+          input: {
+            title: "Mutual connection name",
+            label: "Enter mututal connection name:",
+            placeholder: "User's name",
+          },
+        },
+        {
+          type: "number",
+          currentValue: 3,
+          input: {
+            title: "Number of mutuals",
+            label: "Enter number of mutuals:",
+            placeholder: "000",
+          },
+        },
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Open to work", min: 0, max: 1, current: 0 },
+        { name: "Show mutuals", min: 0, max: 1, current: 1 },
       ],
     },
   ],
