@@ -219,5 +219,70 @@ export const reddit: DataType[number] = {
         { name: "Theme", min: 0, max: 1, current: 1 },
       ],
     },
+    //Profile Card:
+    {
+      type: "profile card",
+      images: [
+        {
+          name: "User Profile Image",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter profile URL:",
+            placeholder: "URL to the profile",
+          },
+        },
+      ],
+      text: [
+        {
+          type: "text",
+          currentValue: "Zohaib-Yousaf",
+          input: {
+            title: "Username",
+            label: "Enter Linkedin user's name:",
+            placeholder: "User's name",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "z/Zohaib-Yousaf",
+          input: {
+            title: "Subreddit",
+            label: "Enter subreddit:",
+            placeholder: "r/name",
+          },
+        },
+
+        {
+          type: "text",
+          currentValue: "Mar 05, 2006",
+          input: {
+            title: "Joining Date",
+            label: "Enter joining date:",
+            placeholder: "Mon DD, YYYY",
+          },
+        },
+        {
+          type: "number",
+          currentValue: 13,
+          input: {
+            title: "Post Karma",
+            label: "Enter Post Karma:",
+            placeholder: "000",
+          },
+        },
+        {
+          type: "number",
+          currentValue: 5,
+          input: {
+            title: "Comment Karma",
+            label: "Enter Comment Karma:",
+            placeholder: "000",
+          },
+        },
+      ],
+      extra: [],
+    },
   ],
 };
