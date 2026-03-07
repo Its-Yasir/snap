@@ -159,5 +159,65 @@ export const reddit: DataType[number] = {
         { name: "Theme", min: 0, max: 1, current: 1 },
       ],
     },
+    //Mini post:
+    {
+      type: "mini post",
+      images: [
+        {
+          name: "Post Content",
+          url: "/horizontal.png",
+          isHidden: true,
+          size: "large",
+          input: {
+            label: "Enter Post URL:",
+            placeholder: "URL to the post",
+          },
+        },
+        {
+          name: "User Image",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter Profile URL:",
+            placeholder: "URL to the profile",
+          },
+        },
+      ],
+      text: [
+        {
+          type: "text",
+          currentValue: "New Post",
+          input: {
+            title: "Post Title",
+            label: "Enter post title:",
+            placeholder: "Post title",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "Post Description",
+          input: {
+            title: "Post Description",
+            label: "Enter post description:",
+            placeholder: "Post description",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "r/news",
+          input: {
+            title: "Subreddit",
+            label: "Enter Subreddit:",
+            placeholder: "r/name",
+          },
+        },
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Theme", min: 0, max: 1, current: 1 },
+      ],
+    },
   ],
 };
