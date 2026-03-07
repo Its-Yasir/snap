@@ -4,5 +4,13 @@ import { pinterest } from "@/data/platforms/pinterest";
 import { linkedIn } from "@/data/platforms/linkedIn";
 import { youTube } from "@/data/platforms/youTube";
 import { reddit } from "@/data/platforms/reddit";
+import { whatsapp } from "@/data/platforms/whatsapp";
 
-export const Data: DataType = [discord, pinterest, linkedIn, youTube, reddit];
+export const Data: DataType = [
+  discord,
+  pinterest,
+  linkedIn,
+  youTube,
+  reddit,
+  whatsapp,
+];
