@@ -3,6 +3,7 @@ import { DataType } from "@/types";
 export const youTube: DataType[number] = {
   platform: "youTube",
   types: [
+    //Thumbnail video:
     {
       type: "thumbnail video",
       images: [
