@@ -7,7 +7,7 @@ export interface CustomInputProps {
   placeholer: string;
   label: string;
   type: "text" | "choice" | "number";
-  currentValue: string;
+  currentValue: string | number;
   choices?: choice[];
   onChange?: (val: string) => void;
 }
