@@ -33,7 +33,7 @@ const codeBlocks = [
           ],
           input: {
             title: "User's connection degree",
-            label: "Chose connection degree:",
+            label: "Choose connection degree:",
             placeholder: "1st, 2nd or 3rd",
           },
         }`,

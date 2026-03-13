@@ -125,7 +125,7 @@ export const reddit: DataType[number] = {
           ],
           input: {
             title: "Post Type",
-            label: "Chose Post type",
+            label: "Choose Post type",
             placeholder: "Suggested, or popular",
           },
         },
@@ -139,7 +139,7 @@ export const reddit: DataType[number] = {
           ],
           input: {
             title: "Post Type",
-            label: "Chose Post type",
+            label: "Choose Post type",
             placeholder: "Suggested, or popular",
           },
         },

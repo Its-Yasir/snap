@@ -111,7 +111,7 @@ export const linkedIn: DataType[number] = {
           ],
           input: {
             title: "User's connection degree",
-            label: "Chose connection degree:",
+            label: "Choose connection degree:",
             placeholder: "1st, 2nd or 3rd",
           },
         },
@@ -125,7 +125,7 @@ export const linkedIn: DataType[number] = {
           ],
           input: {
             title: "Extra button",
-            label: "Chose Extra buttton:",
+            label: "Choose Extra buttton:",
             placeholder: "Follow, connect or nothing",
           },
         },
@@ -139,7 +139,7 @@ export const linkedIn: DataType[number] = {
           ],
           input: {
             title: "Types of reactions",
-            label: "Chose types of reactions:",
+            label: "Choose types of reactions:",
             placeholder: "1, 2 or 3",
           },
         },
@@ -327,8 +327,8 @@ export const linkedIn: DataType[number] = {
           ],
           input: {
             title: "Follow-up button",
-            label: "Chose button type:",
-            placeholder: "Chose one of the following",
+            label: "Choose button type:",
+            placeholder: "Choose one of the following",
           },
         },
         {
@@ -341,7 +341,7 @@ export const linkedIn: DataType[number] = {
           ],
           input: {
             title: "User's connection degree",
-            label: "Chose connection degree:",
+            label: "Choose connection degree:",
             placeholder: "1st, 2nd or 3rd",
           },
         },
@@ -481,7 +481,7 @@ export const linkedIn: DataType[number] = {
           ],
           input: {
             title: "User's connection degree",
-            label: "Chose connection degree:",
+            label: "Choose connection degree:",
             placeholder: "1st, 2nd or 3rd",
           },
         },
@@ -504,7 +504,7 @@ export const linkedIn: DataType[number] = {
           ],
           input: {
             title: "Recation types",
-            label: "Chose reaction types:",
+            label: "Choose reaction types:",
             placeholder: "1, 2 or 3",
           },
         },

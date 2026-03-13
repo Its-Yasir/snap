@@ -74,7 +74,7 @@ export const xTypes: Type[] = [
   { name: "Profile Bar", code: "profile bar", platform: platforms[10] },
   { name: "Creator Bar", code: "creator bar", platform: platforms[10] },
   { name: "Notification", code: "notification", platform: platforms[10] },
-  { name: "Comments", code: "comments", platform: platforms[10] },
+  { name: "Comments & Reply", code: "comments", platform: platforms[10] },
 ];
 
 export const youtubeTypes: Type[] = [

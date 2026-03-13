@@ -90,7 +90,7 @@ export const whatsapp: DataType[number] = {
           url: "/zohaib.png",
           isHidden: true,
           size: "small",
-          info: "You can chose to have image or name letters in extra settings! If the users name is not good the profile icon will be shown",
+          info: "You can Choose to have image or name letters in extra settings! If the users name is not good the profile icon will be shown",
         },
       ],
       text: [
@@ -143,7 +143,7 @@ export const whatsapp: DataType[number] = {
           ],
           input: {
             title: "Message status",
-            label: "Chose message status:",
+            label: "Choose message status:",
             placeholder: "Sent, delivered or ....",
           },
         },
@@ -157,7 +157,7 @@ export const whatsapp: DataType[number] = {
           ],
           input: {
             title: "Message Color",
-            label: "Chose message color:",
+            label: "Choose message color:",
             placeholder: "Green, blue or gray",
           },
         },
@@ -170,7 +170,7 @@ export const whatsapp: DataType[number] = {
           ],
           input: {
             title: "Your role",
-            label: "Chose your role:",
+            label: "Choose your role:",
             placeholder: "Sender or receiver",
           },
         },
@@ -192,7 +192,7 @@ export const whatsapp: DataType[number] = {
           url: "/zohaib.png",
           isHidden: true,
           size: "small",
-          info: "You can chose to have image or name letters in extra settings! If the users name is not good the profile icon will be shown",
+          info: "You can Choose to have image or name letters in extra settings! If the users name is not good the profile icon will be shown",
         },
       ],
       text: [
@@ -245,7 +245,7 @@ export const whatsapp: DataType[number] = {
           ],
           input: {
             title: "Message status",
-            label: "Chose message status:",
+            label: "Choose message status:",
             placeholder: "Sent, delivered or ....",
           },
         },
@@ -259,7 +259,7 @@ export const whatsapp: DataType[number] = {
           ],
           input: {
             title: "Message Color",
-            label: "Chose message color:",
+            label: "Choose message color:",
             placeholder: "Green, blue or gray",
           },
         },
@@ -272,7 +272,7 @@ export const whatsapp: DataType[number] = {
           ],
           input: {
             title: "Your role",
-            label: "Chose your role:",
+            label: "Choose your role:",
             placeholder: "Sender or receiver",
           },
         },
@@ -332,7 +332,7 @@ export const whatsapp: DataType[number] = {
           url: "/zohaib.png",
           isHidden: true,
           size: "small",
-          info: "You can chose to show image or name letters from extra settings!",
+          info: "You can Choose to show image or name letters from extra settings!",
         },
       ],
       text: [
