@@ -447,6 +447,7 @@ export const youTube: DataType[number] = {
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
         { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Extra Links", min: 0, max: 1, current: 1 },
+        { name: "Verified channel", min: 0, max: 1, current: 1 },
       ],
     },
     //Mini Channel Card:
@@ -616,7 +617,7 @@ export const youTube: DataType[number] = {
             placeholder: "Total comments",
           },
         },
-                {
+        {
           type: "choice",
           currentValue: "Subscribed",
           choices: [
@@ -630,7 +631,7 @@ export const youTube: DataType[number] = {
             placeholder: "Subscribed, Not Subscribed or Notification ON",
           },
         },
-                {
+        {
           type: "number",
           currentValue: 47,
           info: "You can turn it off in 'extra settings'.",
@@ -639,7 +640,7 @@ export const youTube: DataType[number] = {
             label: "Enter video played percentage:",
             placeholder: "Percentage of video played",
           },
-        }
+        },
       ],
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
@@ -648,6 +649,6 @@ export const youTube: DataType[number] = {
         { name: "Show timeline", min: 0, max: 1, current: 1 },
         { name: "Show Controls", min: 0, max: 1, current: 0 },
       ],
-    }
+    },
   ],
 };

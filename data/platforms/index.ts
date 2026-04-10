@@ -6,6 +6,7 @@ import { youTube } from "@/data/platforms/youTube";
 import { reddit } from "@/data/platforms/reddit";
 import { whatsapp } from "@/data/platforms/whatsapp";
 import { x } from "@/data/platforms/x";
+import { facebook } from "@/data/platforms/facebook";
 
 export const Data: DataType = [
   discord,
@@ -15,4 +16,5 @@ export const Data: DataType = [
   reddit,
   whatsapp,
   x,
+  facebook,
 ];

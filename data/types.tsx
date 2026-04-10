@@ -98,9 +98,19 @@ export const youtubeTypes: Type[] = [
 ];
 
 export const facebookTypes: Type[] = [
+  {
+    name: "Friend Request Notification",
+    code: "friend request notification",
+    platform: platforms[1],
+  },
+  {
+    name: "Friend Request",
+    code: "friend request",
+    platform: platforms[1],
+  },
   { name: "Post", code: "post", platform: platforms[1] },
-  { name: "Comment", code: "comment", platform: platforms[1] },
-  { name: "Profile", code: "profile", platform: platforms[1] },
+  { name: "Story", code: "story", platform: platforms[1] },
+  { name: "Reel", code: "reel", platform: platforms[1] },
 ];
 
 export const instagramTypes: Type[] = [
