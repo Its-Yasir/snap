@@ -147,7 +147,7 @@ export const linkedIn: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "User open to work?", min: 0, max: 1, current: 0 },
         { name: "Video", min: 0, max: 1, current: 1 },
       ],
@@ -229,7 +229,7 @@ export const linkedIn: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Is open to work?", min: 0, max: 1, current: 0 },
         { name: "Show Campany?", min: 0, max: 1, current: 1 },
       ],
@@ -349,7 +349,7 @@ export const linkedIn: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Premium user", min: 0, max: 1, current: 0 },
         { name: "Open to work", min: 0, max: 1, current: 0 },
         { name: "Verified", min: 0, max: 1, current: 1 },
@@ -411,7 +411,7 @@ export const linkedIn: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Verified company", min: 0, max: 1, current: 1 },
         { name: "Promoted job", min: 0, max: 1, current: 0 },
         { name: "Active job", min: 0, max: 1, current: 0 },
@@ -512,7 +512,7 @@ export const linkedIn: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Author", min: 0, max: 1, current: 0 },
         { name: "Reacted", min: 0, max: 1, current: 0 },
         { name: "Open to work", min: 0, max: 1, current: 0 },
@@ -575,7 +575,7 @@ export const linkedIn: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Open to work", min: 0, max: 1, current: 0 },
         { name: "Show mutuals", min: 0, max: 1, current: 1 },
       ],

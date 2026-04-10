@@ -136,8 +136,8 @@ const ImageEdit = ({ id }: imageEditProps) => {
                 <div className="flex-1">
                   <Inputt
                     type="text"
-                    label={`Edit ${img.name}:`}
-                    placeholer="Enter URL or username..."
+                    label={`${img.input?.label as string}`}
+                    placeholer={img.input?.placeholder as string}
                     currentValue=""
                   />
                 </div>

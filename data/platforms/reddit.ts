@@ -156,7 +156,7 @@ export const reddit: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
       ],
     },
     //Mini post:
@@ -216,7 +216,7 @@ export const reddit: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
       ],
     },
     //Profile Card:

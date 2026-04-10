@@ -140,7 +140,7 @@ export const x: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Video", min: 0, max: 1, current: 1 },
         { name: "Reposted", min: 0, max: 1, current: 1 },
         { name: "Created with Grok", min: 0, max: 1, current: 0 },
@@ -345,7 +345,7 @@ export const x: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Video", min: 0, max: 1, current: 1 },
         { name: "Repost", min: 0, max: 1, current: 1 },
         { name: "Like Quote", min: 0, max: 1, current: 0 },
@@ -475,7 +475,7 @@ export const x: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Video", min: 0, max: 1, current: 1 },
         { name: "Like Comment", min: 0, max: 1, current: 0 },
         { name: "Repost it", min: 0, max: 1, current: 0 },
@@ -872,7 +872,7 @@ export const x: DataType[number] = {
       extra: [
         { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
         { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Theme", min: 0, max: 1, current: 1 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Video", min: 0, max: 1, current: 1 },
         { name: "Like Comment", min: 0, max: 1, current: 0 },
         { name: "Repost comment", min: 0, max: 1, current: 0 },
