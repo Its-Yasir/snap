@@ -554,5 +554,100 @@ export const youTube: DataType[number] = {
         { name: "Dark Theme", min: 0, max: 1, current: 1 },
       ],
     },
+    //Short Video:
+    {
+      type: "short video",
+      images: [
+        {
+          name: "Video thumbnail",
+          url: "/vertical.png",
+          isHidden: true,
+          size: "large",
+          input: {
+            label: "Enter Video Link:",
+            placeholder: "https://youtube.com/watch?v=...",
+          },
+        },
+        {
+          name: "Channel logo",
+          url: "/zohaib.png",
+          isHidden: true,
+          size: "small",
+          input: {
+            label: "Enter Channel Link:",
+            placeholder: "https://youtube.com/channel...",
+          },
+        },
+      ],
+      text: [
+        {
+          type: "text",
+          currentValue: "My Short Video",
+          input: {
+            title: "Video Title",
+            label: "Enter video title:",
+            placeholder: "My Short Video",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "TheRealCarvs",
+          input: {
+            title: "Channel Handler",
+            label: "Enter channel Handler:",
+            placeholder: "channel_handler",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "123k",
+          input: {
+            title: "Likes count",
+            label: "Enter likes count:",
+            placeholder: "Total likes",
+          },
+        },
+        {
+          type: "text",
+          currentValue: "3k",
+          input: {
+            title: "Comments count",
+            label: "Enter comments count:",
+            placeholder: "Total comments",
+          },
+        },
+                {
+          type: "choice",
+          currentValue: "Subscribed",
+          choices: [
+            { key: "Subscribed", value: "Subscribed" },
+            { key: "Not Subscribed", value: "Not Subscribed" },
+            { key: "Notification ON", value: "Notification ON" },
+          ],
+          input: {
+            title: "Subscription status",
+            label: "Choose subscription status:",
+            placeholder: "Subscribed, Not Subscribed or Notification ON",
+          },
+        },
+                {
+          type: "number",
+          currentValue: 47,
+          info: "You can turn it off in 'extra settings'.",
+          input: {
+            title: "Video played percentage",
+            label: "Enter video played percentage:",
+            placeholder: "Percentage of video played",
+          },
+        }
+      ],
+      extra: [
+        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Dark Theme", min: 0, max: 1, current: 1 },
+        { name: "Show timeline", min: 0, max: 1, current: 1 },
+        { name: "Show Controls", min: 0, max: 1, current: 0 },
+      ],
+    }
   ],
 };
