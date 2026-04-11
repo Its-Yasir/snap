@@ -7,6 +7,7 @@ import { reddit } from "@/data/platforms/reddit";
 import { whatsapp } from "@/data/platforms/whatsapp";
 import { x } from "@/data/platforms/x";
 import { facebook } from "@/data/platforms/facebook";
+import { instagram } from "@/data/platforms/instagram";
 
 export const Data: DataType = [
   discord,
@@ -17,4 +18,5 @@ export const Data: DataType = [
   whatsapp,
   x,
   facebook,
+  instagram,
 ];

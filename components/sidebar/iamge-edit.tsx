@@ -34,7 +34,7 @@ const ImageEdit = ({ id }: imageEditProps) => {
   if (!currentSnip) return null;
 
   return (
-    <div className="p-3 flex flex-col gap-8 w-[340px] max-h-[75vh] overflow-y-auto scrollbar-modern">
+    <div className="p-3 flex flex-col gap-8 w-85 max-h-[75vh] overflow-y-auto scrollbar-modern">
       <AnimatePresence mode="popLayout">
         {currentSnip.images.map((img, idx) => (
           <motion.div

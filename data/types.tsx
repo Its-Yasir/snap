@@ -114,9 +114,14 @@ export const facebookTypes: Type[] = [
 ];
 
 export const instagramTypes: Type[] = [
-  { name: "Post", code: "post", platform: platforms[2] },
-  { name: "Comment", code: "comment", platform: platforms[2] },
   { name: "Profile", code: "profile", platform: platforms[2] },
+  { name: "Post", code: "post", platform: platforms[2] },
+  { name: "Follow Request", code: "follow request", platform: platforms[2] },
+  { name: "Comment", code: "comment", platform: platforms[2] },
+  { name: "Reel", code: "reel", platform: platforms[2] },
+  { name: "Message", code: "message", platform: platforms[2] },
+  { name: "Message Request", code: "message request", platform: platforms[2] },
+  { name: "Q & A", code: "q&a", platform: platforms[2] },
 ];
 
 export const snapchatTypes: Type[] = [

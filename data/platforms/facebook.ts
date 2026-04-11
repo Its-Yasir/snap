@@ -307,5 +307,5 @@ export const facebook: DataType[number] = {
         { name: "Verified user", min: 0, max: 1, current: 1 },
       ],
     },
- 
-]};
+  ],
+};
