@@ -415,7 +415,7 @@ const Main = () => {
               </div>
               {post.type !== "empty" && (
                 <div className="w-full flex-1 overflow-visible">
-                  <Snip platform={post.platform} type={post.type} />
+                  <Snip platform={post.platform} type={post.type} data={post} />
                 </div>
               )}
             </div>

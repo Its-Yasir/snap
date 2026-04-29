@@ -3,11 +3,6 @@ import { platforms } from ".";
 
 export const discordTypes: Type[] = [
   { name: "Profile Bar", code: "profile bar", platform: platforms[0] },
-  {
-    name: "Mini Profile Bar",
-    code: "mini profile bar",
-    platform: platforms[0],
-  },
   { name: "Profile Details", code: "profile details", platform: platforms[0] },
   { name: "Profile Card", code: "profile card", platform: platforms[0] },
 ];

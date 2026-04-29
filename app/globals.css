@@ -162,4 +162,7 @@ html {
   .dark .scrollbar-modern {
     scrollbar-color: #3f3f46 transparent; /* zinc-700 */
   }
+  .font-gg-sans {
+    font-family: "gg sans", "Noto Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  }
 }
