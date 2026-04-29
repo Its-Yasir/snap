@@ -1,9 +1,18 @@
 import React, { useEffect, useState, useRef } from "react";
+import { toPng } from "html-to-image";
 import Image from "next/image";
 import { useBoardStore } from "@/store/useStore";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Plus, Trash2, Search } from "lucide-react";
+import { Plus, Trash2, Search, Download, Star, Heart, Sparkles } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { platformTypesData } from "@/data/types";
 import { Data } from "@/data/data";
 import { Post, Type } from "@/types";
@@ -39,6 +48,26 @@ const Main = () => {
     top: number;
   } | null>(null);
   const postsRef = useRef<(HTMLDivElement | null)[]>([]);
+  const snipRefs = useRef<Record<number, HTMLDivElement | null>>({});
+
+  const downloadImage = async (postId: number, multiplier: number) => {
+    const element = snipRefs.current[postId];
+    if (!element) return;
+
+    try {
+      const dataUrl = await toPng(element, {
+        pixelRatio: multiplier,
+        skipAutoScale: true,
+      });
+
+      const link = document.createElement("a");
+      link.download = `snip-${postId}.png`;
+      link.href = dataUrl;
+      link.click();
+    } catch (error) {
+      console.error("Failed to download image", error);
+    }
+  };
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -415,7 +444,60 @@ const Main = () => {
               </div>
               {post.type !== "empty" && (
                 <div className="w-full flex-1 overflow-visible">
-                  <Snip platform={post.platform} type={post.type} data={post} />
+                  <div
+                    ref={(el) => {
+                      snipRefs.current[post.id] = el;
+                    }}
+                    className="rounded-lg overflow-hidden w-max"
+                  >
+                    <Snip
+                      platform={post.platform}
+                      type={post.type}
+                      data={post}
+                    />
+                  </div>
+                  <DropdownMenu>
+                    <DropdownMenuTrigger asChild>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="mt-4 gap-2 border-dashed hover:border-solid transition-all"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <Download className="h-4 w-4" />
+                        Export Snip
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent
+                      className="w-56"
+                      onClick={(e) => e.stopPropagation()}
+                    >
+                      <DropdownMenuLabel>Resolution Options</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      {[1, 2, 3, 4, 5].map((m) => (
+                        <DropdownMenuItem
+                          key={m}
+                          onClick={() => downloadImage(post.id, m)}
+                          className="flex items-center justify-between cursor-pointer"
+                        >
+                          <span>{m}x Resolution</span>
+                          {m === 3 && (
+                            <span className="flex items-center gap-1 text-[10px] bg-yellow-500/20 text-yellow-600 dark:text-yellow-400 px-1.5 py-0.5 rounded-full font-bold">
+                              <Sparkles className="h-3 w-3" />
+                              BEST
+                            </span>
+                          )}
+                        </DropdownMenuItem>
+                      ))}
+                      <DropdownMenuSeparator />
+                      <div className="p-2 text-[10px] text-muted-foreground text-center">
+                        <p className="flex items-center justify-center gap-1">
+                          If you like our service, support us{" "}
+                          <Heart className="h-3 w-3 text-red-500 fill-red-500" />
+                        </p>
+                      </div>
+                    </DropdownMenuContent>
+                  </DropdownMenu>
                 </div>
               )}
             </div>
