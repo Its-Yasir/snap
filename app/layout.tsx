@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SnipProvider } from "@/context/SnipContext";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -25,7 +26,10 @@ export default function RootLayout({
         className={`${inter.variable} antialiased selection:bg-primary/20 selection:text-primary`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <SnipProvider>{children}</SnipProvider>
+          <SnipProvider>
+            {children}
+            <Toaster />
+          </SnipProvider>
         </ThemeProvider>
       </body>
     </html>

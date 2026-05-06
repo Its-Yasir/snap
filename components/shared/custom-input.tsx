@@ -2,6 +2,13 @@ import { useBoardStore } from "@/store/useStore";
 import { cn } from "@/lib/utils";
 import { choice } from "@/types";
 import { useId } from "react";
+import { IoInformationCircleOutline } from "react-icons/io5";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export interface CustomInputProps {
   placeholer: string;
@@ -10,6 +17,7 @@ export interface CustomInputProps {
   currentValue: string | number;
   choices?: choice[];
   onChange?: (val: string) => void;
+  info?: string;
 }
 
 const Inputt = ({
@@ -19,6 +27,7 @@ const Inputt = ({
   currentValue,
   choices,
   onChange,
+  info,
 }: CustomInputProps) => {
   const { settings } = useBoardStore((state) => state);
   const { boardColor } = settings;
@@ -41,15 +50,36 @@ const Inputt = ({
 
   return (
     <div className="flex flex-col gap-1.5 w-full">
-      <label
-        htmlFor={id}
-        className={cn(
-          "text-lg font-normal",
-          dark ? "text-neutral-200" : "text-neutral-700",
+      <div className="flex items-center gap-2">
+        <label
+          htmlFor={id}
+          className={cn(
+            "text-lg font-normal",
+            dark ? "text-neutral-200" : "text-neutral-700",
+          )}
+        >
+          {label}
+        </label>
+        {info && (
+          <div className="mt-1">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <button
+                    type="button"
+                    className="text-neutral-500 hover:text-neutral-400 transition-colors cursor-help"
+                  >
+                    <IoInformationCircleOutline className="text-lg" />
+                  </button>
+                </TooltipTrigger>
+                <TooltipContent side="right" className="max-w-[250px]">
+                  <p className="text-xs leading-relaxed">{info}</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+          </div>
         )}
-      >
-        {label}
-      </label>
+      </div>
       {type === "text" || type === "number" ? (
         <input
           id={id}

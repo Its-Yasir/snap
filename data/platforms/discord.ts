@@ -13,9 +13,10 @@ export const discord: DataType[number] = {
           isHidden: true,
           size: "small",
           input: {
-            label: "Enter profile URL or username:",
-            placeholder: "https://discord.com/zohiab_yousaf or user_name",
+            label: "Enter profile ID:",
+            placeholder: "0123456789012345678",
           },
+          info: "Go to Discord Settings > Advanced > Turn on Developer Mode. Right-click a profile and click Copy User ID. Paste that 18-19 digit number into the app.",
         },
       ],
       text: [
@@ -39,7 +40,7 @@ export const discord: DataType[number] = {
         },
         {
           type: "choice",
-          currentValue: "online",
+          currentValue: "Online",
           choices: [
             { key: "online", value: "Online" },
             { key: "dnd", value: "Do Not Disturb" },
@@ -54,8 +55,8 @@ export const discord: DataType[number] = {
         },
       ],
       extra: [
-        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Padding", min: 0, max: 20, current: 6, default: 6 },
+        { name: "Roundness", min: 0, max: 21, current: 6, default: 6 },
         { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Show online", min: 0, max: 1, current: 1 },
         { name: "Show username", min: 0, max: 1, current: 1 },
@@ -71,9 +72,10 @@ export const discord: DataType[number] = {
           isHidden: true,
           size: "small",
           input: {
-            label: "Enter profile URL or username:",
-            placeholder: "https://discord.com/zohiab_yousaf or user_name",
+            label: "Enter profile ID:",
+            placeholder: "0123456789012345678",
           },
+          info: "Go to Discord Settings > Advanced > Turn on Developer Mode. Right-click a profile and click Copy User ID. Paste that 18-19 digit number into the app.",
         },
         {
           name: "Background Image",
@@ -81,9 +83,10 @@ export const discord: DataType[number] = {
           isHidden: true,
           size: "small",
           input: {
-            label: "Enter profile URL or username:",
-            placeholder: "https://discord.com/zohiab_yousaf or user_name",
+            label: "Enter banner ID:",
+            placeholder: "0123456789012345678",
           },
+          info: "Go to Discord Settings > Advanced > Turn on Developer Mode. Right-click a profile and click Copy User ID. Paste that 18-19 digit number into the app.",
         },
       ],
       text: [
@@ -149,8 +152,8 @@ export const discord: DataType[number] = {
         },
       ],
       extra: [
-        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Padding", min: 0, max: 50, current: 16, default: 16 },
+        { name: "Roundness", min: 0, max: 40, current: 12, default: 12 },
         { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Friend", min: 0, max: 1, current: 1 },
       ],
@@ -165,9 +168,10 @@ export const discord: DataType[number] = {
           isHidden: true,
           size: "small",
           input: {
-            label: "Enter profile URL or username:",
-            placeholder: "https://discord.com/zohiab_yousaf or user_name",
+            label: "Enter profile ID:",
+            placeholder: "0123456789012345678",
           },
+          info: "Go to Discord Settings > Advanced > Turn on Developer Mode. Right-click a profile and click Copy User ID. Paste that 18-19 digit number into the app.",
         },
         {
           name: "Background Image",
@@ -175,9 +179,10 @@ export const discord: DataType[number] = {
           isHidden: true,
           size: "small",
           input: {
-            label: "Enter profile URL or username:",
-            placeholder: "https://discord.com/zohiab_yousaf or user_name",
+            label: "Enter banner ID:",
+            placeholder: "0123456789012345678",
           },
+          info: "Go to Discord Settings > Advanced > Turn on Developer Mode. Right-click a profile and click Copy User ID. Paste that 18-19 digit number into the app.",
         },
       ],
       text: [
@@ -216,8 +221,8 @@ export const discord: DataType[number] = {
         },
       ],
       extra: [
-        { name: "Padding", min: 1, max: 5, current: 2, default: 2 },
-        { name: "Roundness", min: 1, max: 5, current: 2, default: 2 },
+        { name: "Padding", min: 0, max: 50, current: 16, default: 16 },
+        { name: "Roundness", min: 0, max: 40, current: 12, default: 12 },
         { name: "Dark Theme", min: 0, max: 1, current: 1 },
         { name: "Friend", min: 0, max: 1, current: 1 },
       ],

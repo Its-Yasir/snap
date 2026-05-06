@@ -7,6 +7,10 @@ const NextConfig = {
         protocol: "https",
         hostname: "i.pravatar.cc",
       },
+      {
+        protocol: "https",
+        hostname: "cdn.discordapp.com",
+      },
     ],
   },
 };

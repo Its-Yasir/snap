@@ -118,7 +118,7 @@ const MoreEdit = ({ id }: MoreEditProps) => {
                         ? ex.current === 1
                           ? "ON"
                           : "OFF"
-                        : ex.current}
+                        : Math.round(ex.current)}
                     </span>
                   </div>
 
@@ -149,10 +149,14 @@ const MoreEdit = ({ id }: MoreEditProps) => {
                     ) : (
                       <div className="relative group">
                         <ElasticSlider
-                          value={ex.current}
+                          value={Math.round(ex.current)}
                           min={ex.min}
                           max={ex.max}
-                          onChange={(val) => updatePostExtra(id, idx, val)}
+                          isStepped={true}
+                          stepSize={1}
+                          onChange={(val) =>
+                            updatePostExtra(id, idx, Math.round(val))
+                          }
                           isDark={isDark}
                           leftIcon={<Minus size={12} />}
                           rightIcon={<Plus size={12} />}

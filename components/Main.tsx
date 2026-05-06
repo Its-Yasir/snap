@@ -4,7 +4,15 @@ import Image from "next/image";
 import { useBoardStore } from "@/store/useStore";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Plus, Trash2, Search, Download, Star, Heart, Sparkles } from "lucide-react";
+import {
+  Plus,
+  Trash2,
+  Search,
+  Download,
+  Star,
+  Heart,
+  Sparkles,
+} from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -448,7 +456,7 @@ const Main = () => {
                     ref={(el) => {
                       snipRefs.current[post.id] = el;
                     }}
-                    className="rounded-lg overflow-hidden w-max"
+                    className="overflow-hidden w-max"
                   >
                     <Snip
                       platform={post.platform}

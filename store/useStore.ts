@@ -114,6 +114,16 @@ export const useBoardStore = create<BoardState>()(
     }),
     {
       name: "board-storage",
+      partialize: (state) => ({
+        ...state,
+        posts: state.posts.map((post) => ({
+          ...post,
+          images: post.images.map((img) => ({
+            ...img,
+            url: img.url.startsWith("blob:") ? "" : img.url,
+          })),
+        })),
+      }),
     },
   ),
 );

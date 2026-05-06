@@ -18,13 +18,20 @@ const DiscordProfileBar = ({ data }: { data: TypeDataDetail }) => {
     data?.extra?.find((e) => e.name === "Show username")?.current === 1;
   const name = data?.text?.[0]?.currentValue || "";
   const username = data?.text?.[1]?.currentValue || "";
+  const padding = data?.extra?.find((e) => e.name === "Padding")?.current || 0;
+  const roundness =
+    data?.extra?.find((e) => e.name === "Roundness")?.current || 0;
 
   console.log("Data showing for", data);
   return (
     <div
-      className={`w-[296px] h-[42px] ${
-        isDark ? "bg-[#1d1d1e]" : "bg-[#e7e7e9]"
-      } rounded-[8px] flex items-center relative pl-[8px] font-gg-sans`}
+      className={`w-[296px] min-h-[42px] flex items-center relative font-gg-sans`}
+      style={{
+        padding: `${padding}px`,
+        borderRadius: `${roundness}px`,
+        backgroundColor: isDark ? "#000" : "#fff",
+        backgroundImage: `linear-gradient(color-mix(in srgb, rgba(151, 151, 159, 0.12) 100%, rgba(0, 0, 0, 0.12)), color-mix(in srgb, rgba(151, 151, 159, 0.12) 100%, rgba(0, 0, 0, 0.12)))`,
+      }}
     >
       <div className="relative w-[32px] h-[32px]">
         <Image
@@ -35,9 +42,11 @@ const DiscordProfileBar = ({ data }: { data: TypeDataDetail }) => {
           className="rounded-full relative"
         />
         <div
-          className={`w-[12px] h-[12px] flex items-center ${
-            isDark ? "bg-[#1d1d1e]" : "bg-[#e7e7e9]"
-          } rounded-full justify-center -bottom-0.5 -right-0.5 absolute`}
+          className={`w-[12px] h-[12px] flex items-center rounded-full justify-center -bottom-0.5 -right-0.5 absolute`}
+          style={{
+            backgroundColor: isDark ? "#000" : "#fff",
+            backgroundImage: `linear-gradient(color-mix(in srgb, rgba(151, 151, 159, 0.12) 100%, rgba(0, 0, 0, 0.12)), color-mix(in srgb, rgba(151, 151, 159, 0.12) 100%, rgba(0, 0, 0, 0.12)))`,
+          }}
         >
           <DiscordStatusIcon
             status={status || "offline"}

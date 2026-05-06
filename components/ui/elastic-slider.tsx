@@ -82,7 +82,9 @@ const Slider: React.FC<SliderProps> = ({
   onChange,
   isDark,
 }) => {
-  const [internalValue, setInternalValue] = useState<number>(controlledValue);
+  const [internalValue, setInternalValue] = useState<number>(
+    isStepped ? Math.round(controlledValue / stepSize) * stepSize : controlledValue,
+  );
   const sliderRef = useRef<HTMLDivElement>(null);
   const [region, setRegion] = useState<"left" | "middle" | "right">("middle");
   const clientX = useMotionValue(0);
@@ -90,8 +92,12 @@ const Slider: React.FC<SliderProps> = ({
   const scale = useMotionValue(1);
 
   useEffect(() => {
-    setInternalValue(controlledValue);
-  }, [controlledValue]);
+    setInternalValue(
+      isStepped
+        ? Math.round(controlledValue / stepSize) * stepSize
+        : controlledValue,
+    );
+  }, [controlledValue, isStepped, stepSize]);
 
   useMotionValueEvent(clientX, "change", (latest: number) => {
     if (sliderRef.current) {
