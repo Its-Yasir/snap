@@ -2,12 +2,14 @@ import { Data } from "@/data/data";
 import { TypeDataDetail } from "@/types";
 
 import DiscordProfileBar from "@/Snips/discord/DiscordProfileBar";
+import DiscordProfileDetails from "@/Snips/discord/DiscordProfileDetails";
 
 const componentMap: Record<
   string,
   React.ComponentType<{ data: TypeDataDetail }>
 > = {
   "discord-profile bar": DiscordProfileBar,
+  "discord-profile details": DiscordProfileDetails,
 };
 
 interface SnipProps {

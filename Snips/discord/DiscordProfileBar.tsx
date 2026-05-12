@@ -3,7 +3,6 @@ import DiscordStatusIcon, {
 } from "@/components/discord/DiscordStatusIcon";
 import { TypeDataDetail } from "@/types";
 import Image from "next/image";
-import React from "react";
 
 const DiscordProfileBar = ({ data }: { data: TypeDataDetail }) => {
   const statusItem = data?.text?.[2];
